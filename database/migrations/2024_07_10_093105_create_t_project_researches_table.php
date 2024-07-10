@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('t_staff_profiles', function (Blueprint $table) {
+        Schema::create('t_project_researches', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('designation');
+            $table->string('title');
+            $table->string('authors');
             $table->text('description');
-            $table->string('profile_image');
+            $table->string('file');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('t_staff_profiles');
+        Schema::dropIfExists('t_project_researches');
     }
 };

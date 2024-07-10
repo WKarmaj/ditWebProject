@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>AdminLTE 2 | Data Tables</title>
+    <title>DIT | Staff Management</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="admin/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -43,6 +43,7 @@
                     <button data-toggle="modal" data-target="#staffModal" class="btn btn-dark btn-bitbucket text-white btn-sm"><i class="fa fa-plus"></i> Add New</button>
                   </span>
                 </div>
+                
                 <div class="box-body">
                     @if (\Session::has('message'))
                         <div class="responsemessage alert alert-{!! \Session::get('message')[1] !!}">
@@ -53,8 +54,9 @@
                     <thead>
                       <tr>
                         <th>SL#</th>
-                        <th>Name of the Staff</th>
+                        <th>Name</th>
                         <th>Profile Image</th>
+                        <th>Designation</th>
                         <th>Description</th>
                         <th>Actions</th>
                       </tr>
@@ -65,6 +67,7 @@
                           <td>{{ $i + 1 }}</td>
                           <td>{{ $staff->name }}</td>
                           <td><img src="{{ asset('storage/' . $staff->profile_image) }}" class="profile-user-img img-responsive img-circle" alt="{{ $staff->name }}" width="100" height="100"></td>
+                          <td>{{ $staff->designation }}</td>
                           <td>{{ $staff->description }}</td>
                           <td>
                             <button type="button" onclick="showaction('edit', {{ $staff }})" class="btn btn-info"><i class="fa fa-edit"></i> Edit</button>
@@ -101,6 +104,11 @@
                   <div class="form-group">
                     <label for="staffName">Name</label>
                     <input type="text" class="form-control" id="staffName" name="staffName" placeholder="Enter name">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="staffDesignation">Designation</label>
+                    <input type="text" class="form-control" id="staffDesignation" name="staffDesignation" placeholder="Enter designation">
                   </div>
                   <div class="form-group">
                     <label for="staffDescription">Description:</label>
@@ -162,6 +170,7 @@
           document.getElementById('eventModalLabel').innerText = 'Edit Staff';
           document.getElementById('staffId').value = staff.id;
           document.getElementById('staffName').value = staff.name;
+          document.getElementById('staffDesignation').value = staff.designation;
           document.getElementById('staffDescription').value = staff.description;
 
           // Clear the file input field
@@ -173,6 +182,7 @@
           document.getElementById('eventModalLabel').innerText = 'Add Staff';
           document.getElementById('staffId').value = '';
           document.getElementById('staffName').value = '';
+          document.getElementById('staffDesignation').value = '';
           document.getElementById('staffDescription').value = '';
           document.getElementById('staffPhoto').value = '';
 

@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class t_staff_profile extends Model
+class t_project_research extends Model
 {
     use HasFactory;
 
-    protected $table = 't_staff_profiles';
+    protected $table = 't_project_researches';
    
 
     protected $fillable = [
-        'name',
-        'designation',
+        'title',
+        'authors',
         'description',
-        'profile_image',
+        
        
     ];
 }

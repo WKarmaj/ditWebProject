@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('t_staff_profiles', function (Blueprint $table) {
+        Schema::create('t_header_images', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('designation');
-            $table->text('description');
-            $table->string('profile_image');
             $table->timestamps();
         });
     }
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('t_staff_profiles');
+        Schema::dropIfExists('t_header_images');
     }
 };

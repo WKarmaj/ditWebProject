@@ -19,12 +19,14 @@ class StaffController extends Controller
     {
         $validatedData = $request->validate([
             'staffName' => 'required',
+            'staffDesignation' => 'required',
             'staffDescription' => 'required',
             'staffPhoto' => 'required|image',
         ]);
 
         $staff = new t_staff_profile();
         $staff->name = $validatedData['staffName'];
+        $staff->designation = $validatedData['staffDesignation'];
         $staff->description = $validatedData['staffDescription'];
 
         if ($request->hasFile('staffPhoto')) {
@@ -42,6 +44,7 @@ class StaffController extends Controller
 
         if ($staff) {
             $staff->name = $request->staffName;
+            $staff->designation = $request->staffDesignation;
             $staff->description = $request->staffDescription;
 
             if ($request->hasFile('staffPhoto')) {
@@ -66,4 +69,5 @@ class StaffController extends Controller
             return response()->json(['success' => false, 'message' => 'Staff not found!']);
         }
     }
+    
 }
