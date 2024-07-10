@@ -27,85 +27,118 @@
   </head>
   <body class="skin-blue">
     <div class="wrapper">
-      
-         <!-- Header -->
-         @include('admin.header')
-         <!-- End Header -->
+      <!-- Header and Sidebar -->
+      @include('admin.header')
+      @include('admin.sidebar')
 
-      <!-- Left side column. contains the logo and sidebar -->
-        @include('admin.sidebar')
-       <!--End Left side column.  -->
-
-      <!-- Right side column. Contains the navbar and content of the page -->
+      <!-- Content Wrapper -->
       <div class="content-wrapper">
-        <!-- Main content -->
         <section class="content">
           <div class="row">
             <div class="col-xs-12">
               <div class="box">
-              <div class="box-header">
-                    <h3 class="box-title">Staff List</h3>
-                    <span class="fa-pull-right pr-2 py-1 pad">
-                        <button type="button" onclick="showaction('add')" class="btn btn-dark btn-bitbucket text-white btn-sm"><i class="fa fa-plus"></i> Add New</button>
-                    </span>
+                <div class="box-header">
+                  <h3 class="box-title">Staff List</h3>
+                  <span class="fa-pull-right pr-2 py-1 pad">
+                    <button data-toggle="modal" data-target="#staffModal" class="btn btn-dark btn-bitbucket text-white btn-sm"><i class="fa fa-plus"></i> Add New</button>
+                  </span>
                 </div>
                 <div class="box-body">
-                  <table id="example2" class="table table-bordered table-hover">
+                    @if (\Session::has('message'))
+                        <div class="responsemessage alert alert-{!! \Session::get('message')[1] !!}">
+                            {!! \Session::get('message')[0] !!}
+                        </div>
+                    @endif
+                  <table id="stff_table" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>Rendering engine</th>
-                        <th>Browser</th>
-                        <th>Platform(s)</th>
-                        <th>Engine version</th>
-                        <th>CSS grade</th>
+                        <th>SL#</th>
+                        <th>Name of the Staff</th>
+                        <th>Profile Image</th>
+                        <th>Description</th>
+                        <th>Actions</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                          Explorer 4.0</td>
-                        <td>Win 95+</td>
-                        <td> 4</td>
-                        <td>X</td>
-                      </tr>
-                     
+                      @foreach($staffs as $i => $staff)
+                        <tr>
+                          <td>{{ $i + 1 }}</td>
+                          <td>{{ $staff->name }}</td>
+                          <td><img src="{{ asset('storage/' . $staff->profile_image) }}" class="profile-user-img img-responsive img-circle" alt="{{ $staff->name }}" width="100" height="100"></td>
+                          <td>{{ $staff->description }}</td>
+                          <td>
+                            <button type="button" onclick="showaction('edit', {{ $staff }})" class="btn btn-info"><i class="fa fa-edit"></i> Edit</button>
+                            <button type="button" onclick="deleteStaff({{ $staff->id }})" class="btn btn-danger"><i class="fa fa-eraser"></i> Delete</button>
+                          </td>
+                        </tr>
+                      @endforeach
                     </tbody>
-                    <tfoot>
-                      
-                    </tfoot>
                   </table>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
 
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </section><!-- /.content -->
-      </div><!-- /.content-wrapper -->
+      <!-- Staff Modal -->
+      <div class="modal fade" id="staffModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="box box-primary">
+              <div class="box-header">
+                <h3 class="box-title" id="eventModalLabel">Add Staff</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>
+            <div class="modal-body">
+              <form id="staffForm" action="{{ route('add_staff_profile') }}" role="form" method="post" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" id="staffId" name="staffId">
+                <div class="box-body">
+                  <div class="form-group">
+                    <label for="staffName">Name</label>
+                    <input type="text" class="form-control" id="staffName" name="staffName" placeholder="Enter name">
+                  </div>
+                  <div class="form-group">
+                    <label for="staffDescription">Description:</label>
+                    <textarea class="form-control" id="staffDescription" name="staffDescription" rows="3" placeholder="Provide background of the staff"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="staffPhoto">Photo:</label>
+                    <input type="file" class="form-control-file" id="staffPhoto" name="staffPhoto">
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="saveStaffBtn">Save Staff</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <b>Jigme Namgyel Engineering College</b> 
+          <b>Jigme Namgyel Engineering College</b>
         </div>
         <strong>Copyright &copy; 2024 <a href="http://almsaeedstudio.com">Department of Information Technology</a>.</strong> All rights reserved.
       </footer>
-    </div><!-- ./wrapper -->
+    </div>
 
-    <!-- jQuery 2.1.3 -->
+    <!-- jQuery and other scripts -->
     <script src="admin/plugins/jQuery/jQuery-2.1.3.min.js"></script>
-    <!-- Bootstrap 3.3.2 JS -->
     <script src="admin/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- DATA TABES SCRIPT -->
     <script src="admin/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
     <script src="admin/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
-    <!-- SlimScroll -->
     <script src="admin/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <!-- FastClick -->
-    <script src='admin/plugins/fastclick/fastclick.min.js'></script>
-    <!-- AdminLTE App -->
+    <script src="admin/plugins/fastclick/fastclick.min.js"></script>
     <script src="admin/dist/js/app.min.js" type="text/javascript"></script>
-    <!-- AdminLTE for demo purposes -->
     <script src="admin/dist/js/demo.js" type="text/javascript"></script>
-    <!-- page script -->
     <script type="text/javascript">
       $(function () {
         $("#example1").dataTable();
@@ -118,7 +151,62 @@
           "bAutoWidth": false
         });
       });
-    </script>
 
+      // Hide the alert message after 2 seconds
+      setTimeout(function() {
+          $('.responsemessage').fadeOut('slow');
+        }, 1000);
+
+      function showaction(action, staff) {
+        if (action === 'edit') {
+          document.getElementById('eventModalLabel').innerText = 'Edit Staff';
+          document.getElementById('staffId').value = staff.id;
+          document.getElementById('staffName').value = staff.name;
+          document.getElementById('staffDescription').value = staff.description;
+
+          // Clear the file input field
+          document.getElementById('staffPhoto').value = '';
+
+          // Change form action to update route
+          document.getElementById('staffForm').action = "{{ route('update_staff_profile') }}";
+        } else {
+          document.getElementById('eventModalLabel').innerText = 'Add Staff';
+          document.getElementById('staffId').value = '';
+          document.getElementById('staffName').value = '';
+          document.getElementById('staffDescription').value = '';
+          document.getElementById('staffPhoto').value = '';
+
+          // Change form action to add route
+          document.getElementById('staffForm').action = "{{ route('add_staff_profile') }}";
+        }
+        $('#staffModal').modal('show');
+      }
+
+      var saveBtn = document.getElementById('saveStaffBtn');
+      saveBtn.addEventListener('click', function() {
+        var form = document.getElementById('staffForm');
+        form.submit();
+      });
+
+      function deleteStaff(staffId) {
+        if (confirm("Are you sure you want to delete this staff?")) {
+          $.ajax({
+            url: '/staff/' + staffId,
+            type: 'DELETE',
+            data: {
+              _token: '{{ csrf_token() }}'
+            },
+            success: function(response) {
+              if (response.success) {
+                alert(response.message);
+                location.reload();
+              } else {
+                alert('Error: ' + response.message);
+              }
+            }
+          });
+        }
+      }
+    </script>
   </body>
 </html>

@@ -1,0 +1,69 @@
+<?php
+
+namespace App\Http\Controllers\administration;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\t_staff_profile;
+
+
+class StaffController extends Controller
+{
+    public function viewStaffPage()
+    {
+        $staffs = t_staff_profile::all();
+        return view('admin.staff_profile', compact('staffs'));
+    }
+
+    public function add_staff(Request $request)
+    {
+        $validatedData = $request->validate([
+            'staffName' => 'required',
+            'staffDescription' => 'required',
+            'staffPhoto' => 'required|image',
+        ]);
+
+        $staff = new t_staff_profile();
+        $staff->name = $validatedData['staffName'];
+        $staff->description = $validatedData['staffDescription'];
+
+        if ($request->hasFile('staffPhoto')) {
+            $imagePath = $request->file('staffPhoto')->store('staff_photos', 'public');
+            $staff->profile_image = $imagePath;
+        }
+
+        $staff->save();
+
+        return redirect()->back()->with('message', ['Staff added successfully!', 'success']);
+    }
+    public function update(Request $request)
+    {
+        $staff = t_staff_profile::find($request->staffId);
+
+        if ($staff) {
+            $staff->name = $request->staffName;
+            $staff->description = $request->staffDescription;
+
+            if ($request->hasFile('staffPhoto')) {
+                $path = $request->file('staffPhoto')->store('staff_photos', 'public');
+                $staff->profile_image = $path;
+            }
+
+            $staff->save();
+
+            return redirect()->back()->with('message', ['Staff updated successfully!', 'success']);
+        }
+
+        return redirect()->back()->with('message', ['Staff not found!', 'danger']);
+    }
+    public function destroy($id)
+    {
+        $staff = t_staff_profile::find($id);
+        if ($staff) {
+            $staff->delete();
+            return response()->json(['success' => true, 'message' => 'Staff deleted successfully!']);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Staff not found!']);
+        }
+    }
+}
