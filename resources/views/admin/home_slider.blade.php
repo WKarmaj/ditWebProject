@@ -52,7 +52,7 @@
                                                 @if ($slider->images && count(json_decode($slider->images)) > 0)
                                                     @foreach (json_decode($slider->images) as $image)
                                                         <a href="#" onclick="showImageModal('{{ asset('storage/' . $image) }}', '{{ $slider->name }}')">
-                                                            <img src="{{ asset('storage/' . $image) }}" alt="{{ $slider->name }}" class="slider-image">
+                                                            <img src="{{ asset('storage/' . $image) }}" alt="{{ $slider->name }}" class="slider-image" style="max-width: 300px; max-height: 300px; width:auto; height:auto;" alt="">
                                                         </a>
                                                     @endforeach
                                                 @else
