@@ -4,7 +4,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
         <div class="pull-left image">
-            <img src="admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+            <img src="admin/dist/img/dit_logo.png" class="" alt="User Image" />
         </div>
         <div class="pull-left info">
             <p>Administrator</p>
@@ -35,28 +35,16 @@
             </ul>
         </li>
         <li>
-            <a href="#">
+            <a href="{{ route('view_slider')}}">
             <i class="fa fa-picture-o"></i>
             <span>Home Slider Images</span>
             <i class="fa fa-angle-left pull-right"></i>
             </a>
         </li>
-        <li class="treeview">
-            <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>UI Elements</span>
-            <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-            <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-            <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-            <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-            <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-            </ul>
+        <li >
+           
         </li>
-        <li class="treeview">
+        <!-- <li class="treeview">
             <a href="#">
             <i class="fa fa-edit"></i> <span>Forms</span>
             <i class="fa fa-angle-left pull-right"></i>
@@ -66,21 +54,10 @@
             <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
             <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
             </ul>
-        </li>
-        <li class="treeview">
-            <a href="#">
-            <i class="fa fa-table"></i> <span>Tables</span>
-            <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-            <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-            <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
-            </ul>
-        </li>
+        </li> -->
         <li>
-            <a href="pages/calendar.html">
-            <i class="fa fa-calendar"></i> <span>Calendar</span>
-            <small class="label pull-right bg-red">3</small>
+            <a href="{{ route('admin.manage_event') }}">
+            <i class="fa fa-calendar"></i> <span>Event Section</span>
             </a>
         </li>
         <li>

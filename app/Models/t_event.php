@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class t_header_image extends Model
+class t_event extends Model
 {
     use HasFactory;
 }

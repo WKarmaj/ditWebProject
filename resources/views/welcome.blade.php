@@ -51,7 +51,7 @@
             </div>
             <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.facebook.com/JnecDIT"><i class="fab fa-facebook-f fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.facebook.com/JnecDIT"  target="_blank"><i class="fab fa-facebook-f fw-normal"></i></a>
                     <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
                     <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
                 </div>
@@ -345,135 +345,93 @@
 
 
     <!-- Pricing Plan Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Pricing Plans</h5>
-                <h1 class="mb-0">We are Offering Competitive Prices for Our Clients</h1>
-            </div>
-            <div class="row g-0">
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
-                    <div class="bg-light rounded">
-                        <div class="border-bottom py-4 px-5 mb-4">
-                            <h4 class="text-primary mb-1">Basic Plan</h4>
-                            <small class="text-uppercase">For Small Size Business</small>
-                        </div>
-                        <div class="p-5 pt-0">
-                            <h1 class="display-5 mb-3">
-                                <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>49.00<small
-                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Month</small>
-                            </h1>
-                            <div class="d-flex justify-content-between mb-3"><span>HTML5 & CSS3</span><i class="fa fa-check text-primary pt-1"></i></div>
-                            <div class="d-flex justify-content-between mb-3"><span>Bootstrap v5</span><i class="fa fa-check text-primary pt-1"></i></div>
-                            <div class="d-flex justify-content-between mb-3"><span>Responsive Layout</span><i class="fa fa-times text-danger pt-1"></i></div>
-                            <div class="d-flex justify-content-between mb-2"><span>Cross-browser Support</span><i class="fa fa-times text-danger pt-1"></i></div>
-                            <a href="" class="btn btn-primary py-2 px-4 mt-4">Order Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
-                    <div class="bg-white rounded shadow position-relative" style="z-index: 1;">
-                        <div class="border-bottom py-4 px-5 mb-4">
-                            <h4 class="text-primary mb-1">Standard Plan</h4>
-                            <small class="text-uppercase">For Medium Size Business</small>
-                        </div>
-                        <div class="p-5 pt-0">
-                            <h1 class="display-5 mb-3">
-                                <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>99.00<small
-                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Month</small>
-                            </h1>
-                            <div class="d-flex justify-content-between mb-3"><span>HTML5 & CSS3</span><i class="fa fa-check text-primary pt-1"></i></div>
-                            <div class="d-flex justify-content-between mb-3"><span>Bootstrap v5</span><i class="fa fa-check text-primary pt-1"></i></div>
-                            <div class="d-flex justify-content-between mb-3"><span>Responsive Layout</span><i class="fa fa-check text-primary pt-1"></i></div>
-                            <div class="d-flex justify-content-between mb-2"><span>Cross-browser Support</span><i class="fa fa-times text-danger pt-1"></i></div>
-                            <a href="" class="btn btn-primary py-2 px-4 mt-4">Order Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
-                    <div class="bg-light rounded">
-                        <div class="border-bottom py-4 px-5 mb-4">
-                            <h4 class="text-primary mb-1">Advanced Plan</h4>
-                            <small class="text-uppercase">For Large Size Business</small>
-                        </div>
-                        <div class="p-5 pt-0">
-                            <h1 class="display-5 mb-3">
-                                <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>149.00<small
-                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Month</small>
-                            </h1>
-                            <div class="d-flex justify-content-between mb-3"><span>HTML5 & CSS3</span><i class="fa fa-check text-primary pt-1"></i></div>
-                            <div class="d-flex justify-content-between mb-3"><span>Bootstrap v5</span><i class="fa fa-check text-primary pt-1"></i></div>
-                            <div class="d-flex justify-content-between mb-3"><span>Responsive Layout</span><i class="fa fa-check text-primary pt-1"></i></div>
-                            <div class="d-flex justify-content-between mb-2"><span>Cross-browser Support</span><i class="fa fa-check text-primary pt-1"></i></div>
-                            <a href="" class="btn btn-primary py-2 px-4 mt-4">Order Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Pricing Plan End -->
 
 
     <!-- Quote Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-7">
-                    <div class="section-title position-relative pb-3 mb-5">
-                        <h5 class="fw-bold text-primary text-uppercase">Request A Quote</h5>
-                        <h1 class="mb-0">Need A Free Quote? Please Feel Free to Contact Us</h1>
-                    </div>
-                    <div class="row gx-3">
-                        <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-                            <h5 class="mb-4"><i class="fa fa-reply text-primary me-3"></i>Reply within 24 hours</h5>
-                        </div>
-                        <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
-                            <h5 class="mb-4"><i class="fa fa-phone-alt text-primary me-3"></i>24 hrs telephone support</h5>
-                        </div>
-                    </div>
-                    <p class="mb-4">Eirmod sed tempor lorem ut dolores. Aliquyam sit sadipscing kasd ipsum. Dolor ea et dolore et at sea ea at dolor, justo ipsum duo rebum sea invidunt voluptua. Eos vero eos vero ea et dolore eirmod et. Dolores diam duo invidunt lorem. Elitr ut dolores magna sit. Sea dolore sanctus sed et. Takimata takimata sanctus sed.</p>
-                    <div class="d-flex align-items-center mt-2 wow zoomIn" data-wow-delay="0.6s">
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
-                            <i class="fa fa-phone-alt text-white"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="mb-2">Call to ask any question</h5>
-                            <h4 class="text-primary mb-0">+012 345 6789</h4>
-                        </div>
-                    </div>
+        <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s" >
+            <div class="container py-5">
+                <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" >
+                    <h5 class="fw-bold text-primary text-uppercase">Our Vision</h5>
+                    <h4 class="mb-3">Aspire to be the pragmatic department, committed to cultivating an environment of excellence, innovation, and holistic services to empower university students to excel in the diverse field of IT, including Networking, System Administration, System Development, Multimedia & Animation, and Cybersecurity.</h4>
                 </div>
-                <div class="col-lg-5">
-                    <div class="bg-primary rounded h-100 d-flex align-items-center p-5 wow zoomIn" data-wow-delay="0.9s">
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-xl-12">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name" style="height: 55px;">
-                                </div>
-                                <div class="col-12">
-                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email" style="height: 55px;">
-                                </div>
-                                <div class="col-12">
-                                    <select class="form-select bg-light border-0" style="height: 55px;">
-                                        <option selected>Select A Service</option>
-                                        <option value="1">Service 1</option>
-                                        <option value="2">Service 2</option>
-                                        <option value="3">Service 3</option>
-                                    </select>
-                                </div>
-                                <div class="col-12">
-                                    <textarea class="form-control bg-light border-0" rows="3" placeholder="Message"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-dark w-100 py-3" type="submit">Request A Quote</button>
-                                </div>
+                <div class="container story position-relative">
+                    <div class="row mb-5 wow fadeInUp" data-wow-delay="0.1s" >
+                        <div class="col-12 text-md-center">
+                            <div class="d-inline-block bg-primary text-white rounded py-2 px-4">Mission</div>
+                        </div>
+                    </div>
+                    <div class="row gx-5 story-right position-relative mb-5 wow fadeInUp" data-wow-delay="0.1s" >
+                        <div class="col-md-6 text-md-end">
+                            <h6 class="fw-bold mb-3 ms-3 ms-md-0">01 </h6>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="story-text position-relative d-inline-block bg-light p-4 ms-3 ms-md-0">
+                                <h4>Quality above Quantity</h4>
+                                <p class="m-0">Prioritizing the cultivation of quality graduates over quantity, ensuring that each student is exceptionally prepared for the dynamic and competitive IT industry</p>
                             </div>
-                        </form>
+                        </div>
+                    </div>
+                    <div class="row gx-5 story-left position-relative mb-5 wow fadeInUp" data-wow-delay="0.1s" >
+                        <div class="col-md-6 d-block d-md-none">
+                            <h6 class="fw-bold mb-3 ms-3 ms-md-0">02</h6>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <div class="story-text position-relative d-inline-block bg-light p-4 ms-3 ms-md-0">
+                                <h4>Skill Focused</h4>
+                                <p class="m-0">Equipping students with the latest technological skills and fostering innovation through hands-on learning, research, and collaboration with industry partners.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 d-none d-md-block">
+                            <h6 class="fw-bold mb-3 ms-3 ms-md-0">02</h6>
+                        </div>
+                    </div>
+
+                    <div class="row gx-5 story-right position-relative mb-5 wow fadeInUp" data-wow-delay="0.1s" >
+                        <div class="col-md-6 text-md-end">
+                            <h6 class="fw-bold mb-3 ms-3 ms-md-0">03</h6>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="story-text position-relative d-inline-block bg-light p-4 ms-3 ms-md-0">
+                                <h4>Sustainability Through Technology</h4>
+                                <p class="m-0">Spearheading the college's journey towards sustainability by developing systems and solutions that lead to a paperless campus, reducing environmental impact and enhancing operational efficiency</p>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="row gx-5 story-left position-relative mb-5 wow fadeInUp" data-wow-delay="0.1s" >
+                        <div class="col-md-6 d-block d-md-none">
+                            <h6 class="fw-bold mb-3 ms-3 ms-md-0"></h6>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <div class="story-text position-relative d-inline-block bg-light p-4 ms-3 ms-md-0">
+                                <h4>Expansion through Collaboration</h4>
+                                <p class="m-0">Actively engage with global IT communities to promote knowledge sharing, collaboration opportunities, and career opportunities for students</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 d-none d-md-block">
+                            <h6 class="fw-bold mb-3 ms-3 ms-md-0">04</h6>
+                        </div>
+                    </div>
+                    
+                    <div class="row gx-5 story-right position-relative mb-5 wow fadeInUp" data-wow-delay="0.1s" >
+                        <div class="col-md-6 text-md-end">
+                            <h6 class="fw-bold mb-3 ms-3 ms-md-0">05</h6>
+                        </div>  
+                        <div class="col-md-6">
+                            <div class="story-text position-relative d-inline-block bg-light p-4 ms-3 ms-md-0">
+                                <h4> Continuous Upgradation</h4>
+                                <p class="m-0">Committed to ongoing self-assessment and improvement of programmes/courses and services to meet the evolving needs of the students and advancement in the IT industry</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row wow fadeInUp" data-wow-delay="0.1s" >
+                        <div class="col-12 text-md-center">
+                            <div class="d-inline-block bg-primary text-white rounded py-2 px-4">By adhering to these principles, the department not only aims to produce quality IT professionals but also contributes towards the further development of the college and the university.</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     <!-- Quote End -->
 
 
@@ -512,8 +470,8 @@
                 <h5 class="fw-bold text-primary text-uppercase">Latest Blog</h5>
                 <h1 class="mb-0">Read The Latest Articles from Our Blog Post</h1>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
+            <div class="owl-carousel testimonial-carousel wow fadeInUp">
+                <div class="col-lg-10 wow slideInUp" data-wow-delay="0.3s">
                     <div class="blog-item bg-light rounded overflow-hidden">
                         <div class="blog-img position-relative overflow-hidden">
                             <img class="img-fluid" src="img/blog-1.jpg" alt="">
@@ -530,7 +488,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
+                <div class="col-lg-10 wow slideInUp" data-wow-delay="0.6s">
                     <div class="blog-item bg-light rounded overflow-hidden">
                         <div class="blog-img position-relative overflow-hidden">
                             <img class="img-fluid" src="img/blog-2.jpg" alt="">
@@ -547,7 +505,24 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
+                <div class="col-lg-10 wow slideInUp" data-wow-delay="0.9s">
+                    <div class="blog-item bg-light rounded overflow-hidden">
+                        <div class="blog-img position-relative overflow-hidden">
+                            <img class="img-fluid" src="img/blog-3.jpg" alt="">
+                            <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="">Web Design</a>
+                        </div>
+                        <div class="p-4">
+                            <div class="d-flex mb-3">
+                                <small class="me-3"><i class="far fa-user text-primary me-2"></i>John Doe</small>
+                                <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</small>
+                            </div>
+                            <h4 class="mb-3">How to build a website</h4>
+                            <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
+                            <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10 wow slideInUp" data-wow-delay="0.9s">
                     <div class="blog-item bg-light rounded overflow-hidden">
                         <div class="blog-img position-relative overflow-hidden">
                             <img class="img-fluid" src="img/blog-3.jpg" alt="">
@@ -694,9 +669,12 @@
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/counterup/counterup.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js" type="text/javascript"></script>
+    <script src="lib/lightbox/js/lightbox.min.js" type="text/javascript"></script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+        
 </body>
 
 </html>

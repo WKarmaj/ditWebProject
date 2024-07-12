@@ -71,7 +71,7 @@
                           <td>{{ $staff->description }}</td>
                           <td>
                             <button type="button" onclick="showaction('edit', {{ $staff }})" class="btn btn-info"><i class="fa fa-edit"></i> Edit</button>
-                            <button type="button" onclick="deleteStaff({{ $staff->id }})" class="btn btn-danger"><i class="fa fa-eraser"></i> Delete</button>
+                            <button type="button" onclick="deleteStaff({{ $staff->id }})" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
                           </td>
                         </tr>
                       @endforeach

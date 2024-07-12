@@ -13,4 +13,9 @@ class HomeController extends Controller
         $staff = t_staff_profile::all();
         return view('welcome',compact('staff'));
     }
+    public function aboutUs()
+    {
+        
+        return view('aboutus');
+    }
 }

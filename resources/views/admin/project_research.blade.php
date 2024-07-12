@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>DIT | Project&Research</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link href="admin/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -50,10 +50,34 @@
                                                 <td>{{ $project->title }}</td>
                                                 <td>{{ $project->authors }}</td>
                                                 <td>{{ $project->description }}</td>
-                                                
+                                                <td>
+                                                    @php
+                                                        $files = json_decode($project->file, true);
+                                                    @endphp
+
+                                                    @if (is_array($files))
+                                                        @foreach ($files as $file)
+                                                            @if (isset($file['path']) && isset($file['original_name']))
+                                                                @php
+                                                                    $filePath = asset('storage/' . $file['path']);
+                                                                    $fileName = $file['original_name'];
+                                                                @endphp
+                                                                <div>
+                                                                    <a href="{{ $filePath }}" target="_blank">
+                                                                        <i class="fa fa-file-pdf-o"></i> {{ $fileName }}
+                                                                    </a>
+                                                                </div>
+                                                                <br>
+                                                            @endif
+                                                        @endforeach
+                                                    @else
+                                                        No files uploaded.
+                                                    @endif
+                                                </td>
+
                                                 <td>
                                                     <button type="button" onclick="showAction('edit', {{ $project }})" class="btn btn-info"><i class="fa fa-edit"></i> Edit</button>
-                                                    <button type="button" onclick="deleteProject({{ $project->id }})" class="btn btn-danger"><i class="fa fa-eraser"></i> Delete</button>
+                                                    <button type="button" onclick="deleteProject({{ $project->id }})" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -95,7 +119,10 @@
                                     <label for="projectDescription">Description</label>
                                     <textarea class="form-control" id="projectDescription" name="projectDescription" rows="3" placeholder="Provide description"></textarea>
                                 </div>
-                                
+                                <div class="form-group">
+                                    <label for="projectFiles">Upload PDF Files</label>
+                                    <input type="file" class="form-control" id="projectFiles" name="projectFiles[]" multiple accept=".pdf">
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -111,7 +138,7 @@
             <div class="pull-right hidden-xs">
                 <b>Jigme Namgyel Engineering College</b>
             </div>
-            <strong>&copy; 2024 <a href="http://almsaeedstudio.com">Department of Information Technology</a>. All rights reserved.</strong>
+            <strong>&copy; 2024 <a href="">Department of Information Technology</a>. All rights reserved.</strong>
         </footer>
     </div>
 

@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class t_project_research extends Model
+class t_slider extends Model
 {
     use HasFactory;
 
-    protected $table = 't_project_researches';
+     protected $table = 't_sliders';
    
 
     protected $fillable = [
-        'title',
-        'authors',
+        'name',
         'description',
-        'file',
+        'images',
     ];
 }
