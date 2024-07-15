@@ -7,6 +7,7 @@ use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\administration\ProjectController;
 use App\Http\Controllers\administration\EventController;
 use App\Http\Controllers\administration\SliderController;
+use App\Http\Controllers\administration\GoalController;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -34,18 +35,23 @@ Route::middleware('auth')->group(function () {
     Route::post('/events/save', [EventController::class, 'saveEvent'])->name('save_event');
     Route::post('/events/update', [EventController::class, 'updateEvent'])->name('update_event');
     Route::delete('/events/{id}', [EventController::class, 'deleteEvent'])->name('delete_event');
-    
     // View slider dashboard
-Route::get('/sliders', [SliderController::class, 'viewSliderPage'])->name('view_slider');
+    Route::get('/sliders', [SliderController::class, 'viewSliderPage'])->name('view_slider');
+    // Save slider
+    Route::post('/sliders/save', [SliderController::class, 'saveSlider'])->name('save_slider');
+    // Update slider
+    Route::post('/sliders/update', [SliderController::class, 'updateSlider'])->name('update_slider');
+    // Delete slider
+    Route::delete('/sliders/{id}', [SliderController::class, 'deleteSlider'])->name('delete_slider');
+    Route::get('/edit_goals',[GoalController::class,'viewGoalPage'])->name('admin.edit_goals');
+    Route::post('/save-vision', [GoalController::class, 'saveVision'])->name('save_vision');
+    Route::post('/update-vision', [GoalController::class, 'updateVision'])->name('update_vision');
+    Route::post('/delete-vision', [GoalController::class, 'deleteVision'])->name('delete_vision');
 
-// Save slider
-Route::post('/sliders/save', [SliderController::class, 'saveSlider'])->name('save_slider');
-
-// Update slider
-Route::post('/sliders/update', [SliderController::class, 'updateSlider'])->name('update_slider');
-
-// Delete slider
-Route::delete('/sliders/{id}', [SliderController::class, 'deleteSlider'])->name('delete_slider');
+    Route::post('/save-mission', [GoalController::class, 'saveMission'])->name('save_mission');
+    Route::post('/update-mission', [GoalController::class, 'updateMission'])->name('update_mission');
+    Route::post('/delete-mission', [GoalController::class, 'deleteMission'])->name('delete_mission');
+        
 
     
 });
