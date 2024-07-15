@@ -119,6 +119,94 @@
               </div>
             </div><!-- ./col -->
           </div><!-- /.row -->
+          <div class="row">
+          <section class="col-lg-7 connectedSortable">
+              <!-- Custom tabs (Charts with tabs)-->
+              <!-- Chat box -->
+              <div class="box box-success">
+                <div class="box-header">
+                  <i class="fa fa-comments-o"></i>
+                  <h3 class="box-title">Manage Programmes</h3>
+                  <span class="fa-pull-right pr-2 py-1 pad">
+                      <button onclick="showProjectModal('add')" class="btn btn-dark btn-bitbucket text-white btn-sm"><i class="fa fa-plus"></i> Add New</button>
+                  </span>
+                  <span class="fa-pull-right pr-2 py-1 pad">
+                      <button onclick="showProjectModal('add')" class="btn btn-dark btn-bitbucket text-white btn-sm"><i class="fa fa-plus"></i> Add New</button>
+                  </span>
+                </div>
+              </div>
+            </section>
+            <!--CSN -->
+            <section class="col-lg-7 connectedSortable">
+              <div class="box box-solid bg-light-blue-gradient">
+                <div class="box-header">
+                  <!-- tools box -->
+                  <div class="pull-right box-tools">
+                    <button class="btn btn-primary btn-sm pull-right" data-widget='collapse' data-toggle="tooltip" title="Collapse" style="margin-right: 5px;"><i class="fa fa-minus"></i></button>
+                  </div><!-- /. tools -->
+                  <i class="fa fa-map-marker"></i>
+                  <h3 class="box-title">
+                    Computer System & Network
+                  </h3>
+                </div>
+                <div class="box-body">
+                  @if (\Session::has('message'))
+                      <div class="responsemessage alert alert-{!! \Session::get('message')[1] !!}">
+                          {!! \Session::get('message')[0] !!}
+                      </div>
+                  @endif
+                    <table id="stff_table" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>SL#</th>
+                                <th>Title</th>
+                                <th>Authors</th>
+                                <th>Description</th>
+                                <th>Files</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div><!-- /.box-body-->
+              </div>
+              <!-- /.box -->
+              <!-- Multimedia -->
+              <div class="box box-solid bg-teal-gradient">
+                <div class="box-header">
+                <i class="fa fa-map-marker"></i>
+                  <h3 class="box-title">Multimedia & Animation</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  </div>
+                </div>
+                <div class="box-body border-radius-none">
+                  @if (\Session::has('message'))
+                      <div class="responsemessage alert alert-{!! \Session::get('message')[1] !!}">
+                          {!! \Session::get('message')[0] !!}
+                      </div>
+                  @endif
+                    <table id="stff_table" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>SL#</th>
+                                <th>Title</th>
+                                <th>Authors</th>
+                                <th>Description</th>
+                                <th>Files</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </section>
+          </div>
           <!-- Main row -->
           <!-- /.row (main row) -->
 

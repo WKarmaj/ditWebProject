@@ -8,6 +8,7 @@ use App\Http\Controllers\administration\ProjectController;
 use App\Http\Controllers\administration\EventController;
 use App\Http\Controllers\administration\SliderController;
 use App\Http\Controllers\administration\GoalController;
+use App\Http\Controllers\administration\StudentController;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -51,7 +52,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/save-mission', [GoalController::class, 'saveMission'])->name('save_mission');
     Route::post('/update-mission', [GoalController::class, 'updateMission'])->name('update_mission');
     Route::post('/delete-mission', [GoalController::class, 'deleteMission'])->name('delete_mission');
-        
+    
+    Route::get('/csn_projects',[StudentController::class,'viewCSNPage'])->name('admin.csn_project');
+    Route::get('/projects', [StudentController::class, 'index'])->name('projects');
+    Route::post('/save', [StudentController::class, 'saveProject'])->name('save_project');
+    Route::post('/update', [StudentController::class, 'updateProject'])->name('update_project');
+    Route::post('/delete', [StudentController::class, 'deleteProject'])->name('delete_project');
+
+   
 
     
 });
