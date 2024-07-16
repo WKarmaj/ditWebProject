@@ -39,6 +39,7 @@
                                         <tr>
                                             <th>SL#</th>
                                             <th>Vision Text</th>
+                                            <th>Image</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -46,7 +47,17 @@
                                         @foreach($visions as $i => $vision)
                                         <tr>
                                             <td>{{ $i + 1 }}</td>
-                                            <td>{{ $vision->text }}</td>
+                                            <td style="width: 30%">{{ $vision->text }}</td>
+                                            <td>
+                                                @if($vision->images)
+                                                    @php $images = json_decode($vision->images, true); @endphp
+                                                    @foreach($images as $image)
+                                                        <a href="{{ Storage::url($image) }}" target="_blank">
+                                                            <img src="{{ Storage::url($image) }}" alt="Vision Image" style="width: 400px; height: auto;">
+                                                        </a>
+                                                    @endforeach
+                                                @endif
+                                            </td>
                                             <td>
                                                 <button type="button" onclick="showVisionAction('edit', {{ $vision }})" class="btn btn-info"><i class="fa fa-edit"></i> Edit</button>
                                                 <button type="button" onclick="deleteVision({{ $vision->id }})" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
@@ -66,6 +77,7 @@
                                             <th>SL#</th>
                                             <th>Key Words</th>
                                             <th>Descriptions</th>
+                                            <th>Image</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -74,7 +86,16 @@
                                         <tr>
                                             <td>{{ $i + 1 }}</td>
                                             <td>{{ $mission->keywords }}</td>
-                                            <td>{{ $mission->description }}</td>
+                                            <td style="width: 30%">{{ $mission->description }}</td>
+                                            <td>
+                                                @if($mission->images)
+                                                    @foreach(json_decode($mission->images) as $image)
+                                                    <a href="{{ Storage::url($image) }}" target="_blank">
+                                                        <img src="{{ asset('storage/' . $image) }}" alt="Mission Image" style="width: 300px; height: auto;">
+                                                    </a>
+                                                    @endforeach
+                                                @endif
+                                            </td>
                                             <td>
                                                 <button type="button" onclick="showMissionAction('edit', {{ $mission }})" class="btn btn-info"><i class="fa fa-edit"></i> Edit</button>
                                                 <button type="button" onclick="deleteMission({{ $mission->id }})" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>

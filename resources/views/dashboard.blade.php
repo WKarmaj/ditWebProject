@@ -64,6 +64,11 @@
 
         <!-- Main content -->
         <section class="content">
+          @if (\Session::has('message'))
+              <div class="responsemessage alert alert-{!! \Session::get('message')[1] !!}">
+                  {!! \Session::get('message')[0] !!}
+              </div>
+          @endif
           <!-- Small boxes (Stat box) -->
           <div class="row">
             <div class="col-lg-3 col-xs-6">
@@ -120,92 +125,159 @@
             </div><!-- ./col -->
           </div><!-- /.row -->
           <div class="row">
-          <section class="col-lg-7 connectedSortable">
-              <!-- Custom tabs (Charts with tabs)-->
-              <!-- Chat box -->
-              <div class="box box-success">
-                <div class="box-header">
-                  <i class="fa fa-comments-o"></i>
-                  <h3 class="box-title">Manage Programmes</h3>
-                  <span class="fa-pull-right pr-2 py-1 pad">
-                      <button onclick="showProjectModal('add')" class="btn btn-dark btn-bitbucket text-white btn-sm"><i class="fa fa-plus"></i> Add New</button>
-                  </span>
-                  <span class="fa-pull-right pr-2 py-1 pad">
-                      <button onclick="showProjectModal('add')" class="btn btn-dark btn-bitbucket text-white btn-sm"><i class="fa fa-plus"></i> Add New</button>
-                  </span>
-                </div>
-              </div>
-            </section>
-            <!--CSN -->
             <section class="col-lg-7 connectedSortable">
-              <div class="box box-solid bg-light-blue-gradient">
-                <div class="box-header">
-                  <!-- tools box -->
-                  <div class="pull-right box-tools">
-                    <button class="btn btn-primary btn-sm pull-right" data-widget='collapse' data-toggle="tooltip" title="Collapse" style="margin-right: 5px;"><i class="fa fa-minus"></i></button>
-                  </div><!-- /. tools -->
-                  <i class="fa fa-map-marker"></i>
-                  <h3 class="box-title">
-                    Computer System & Network
-                  </h3>
-                </div>
-                <div class="box-body">
-                  @if (\Session::has('message'))
-                      <div class="responsemessage alert alert-{!! \Session::get('message')[1] !!}">
-                          {!! \Session::get('message')[0] !!}
-                      </div>
-                  @endif
-                    <table id="stff_table" class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>SL#</th>
-                                <th>Title</th>
-                                <th>Authors</th>
-                                <th>Description</th>
-                                <th>Files</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
-                </div><!-- /.box-body-->
-              </div>
-              <!-- /.box -->
-              <!-- Multimedia -->
-              <div class="box box-solid bg-teal-gradient">
-                <div class="box-header">
-                <i class="fa fa-map-marker"></i>
-                  <h3 class="box-title">Multimedia & Animation</h3>
-                  <div class="box-tools pull-right">
-                    <button class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <div class="box box-success">
+                  <div class="box-header">
+                    <i class="fa fa-comments-o"></i>
+                    <h3 class="box-title">Manage Programmes</h3>
+                    <span class="fa-pull-right pr-2 py-1 pad">
+                        <button onclick="showProjectModal('add')" class="btn btn-dark btn-bitbucket text-white btn-sm"><i class="fa fa-plus"></i> Add New</button>
+                    </span>
+                    <span class="fa-pull-right pr-2 py-1 pad">
+                        <button onclick="showProjectModal('add')" class="btn btn-dark btn-bitbucket text-white btn-sm"><i class="fa fa-plus"></i> Add New</button>
+                    </span>
                   </div>
                 </div>
-                <div class="box-body border-radius-none">
-                  @if (\Session::has('message'))
-                      <div class="responsemessage alert alert-{!! \Session::get('message')[1] !!}">
-                          {!! \Session::get('message')[0] !!}
-                      </div>
-                  @endif
-                    <table id="stff_table" class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>SL#</th>
-                                <th>Title</th>
-                                <th>Authors</th>
-                                <th>Description</th>
-                                <th>Files</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                <!--CSN -->
+              <section class="col-lg-9 connectedSortable">
+                <div class="box box-solid bg-light-blue-gradient">
+                  <div class="box-header">
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                      <button class="btn btn-primary btn-sm pull-right" data-widget='collapse' data-toggle="tooltip" title="Collapse" style="margin-right: 5px;"><i class="fa fa-minus"></i></button>
+                    </div><!-- /. tools -->
+                    <i class="fa fa-map-marker"></i>
+                    <h3 class="box-title">
+                      Computer System & Network
+                    </h3>
+                  </div>
+                  <div class="box-body">
+                      <table id="stff_table" class="table table-bordered table-hover">
+                          <thead>
+                              <tr>
+                                  <th>SL#</th>
+                                  <th>Title</th>
+                                  <th>Authors</th>
+                                  <th>Description</th>
+                                  <th>Files</th>
+                                  <th>Actions</th>
+                              </tr>
+                          </thead>
+                          <tbody>
 
-                        </tbody>
-                    </table>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
+                          </tbody>
+                      </table>
+                  </div><!-- /.box-body-->
+                </div>
+                <!-- /.box -->
+                <!-- Multimedia -->
+                <div class="box box-solid bg-teal-gradient">
+                  <div class="box-header">
+                  <i class="fa fa-map-marker"></i>
+                    <h3 class="box-title">Multimedia & Animation</h3>
+                    <div class="box-tools pull-right">
+                      <button class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    </div>
+                  </div>
+                  <div class="box-body border-radius-none">
+                      <table id="stff_table" class="table table-bordered table-hover">
+                          <thead>
+                              <tr>
+                                  <th>SL#</th>
+                                  <th>Title</th>
+                                  <th>Authors</th>
+                                  <th>Description</th>
+                                  <th>Files</th>
+                                  <th>Actions</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+
+                          </tbody>
+                      </table>
+                  </div><!-- /.box-body -->
+                </div><!-- /.box -->
+              </section>
             </section>
+            <!-- right col (We are only adding the ID to make the widgets sortable)-->
+              <section class="col-lg-5 connectedSortable">
+                <div class="box box-success">
+                    <div class="box-header">
+                        <div class="pull-right box-tools">
+                            <button class="btn btn-primary btn-sm pull-right" data-widget='collapse' data-toggle="tooltip" title="Collapse" style="margin-right: 5px;"><i class="fa fa-minus"></i></button>
+                        </div>
+                        <i class="fa fa-globe"></i>
+                        <h3 class="box-title">Manage Social Platform Links</h3>
+                    </div>
+                    <div class="box-body">
+                        <button data-toggle="modal" data-target="#socialMediaModal" class="btn btn-dark btn-bitbucket text-white btn-sm"><i class="fa fa-plus"></i> Add New</button>
+                        <table id="social_media_table" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>SL#</th>
+                                    <th>Social Media</th>
+                                    <th>Link</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($socialMediaLinks as $i => $link)
+                                    <tr>
+                                        <td>{{ $i + 1 }}</td>
+                                        <td><i class="fa {{ $link->icon }}"></i> {{ $link->type }}</td>
+                                        <td>{{ $link->link }}</td>
+                                        <td>
+                                            <button type="button" onclick="editSocialMedia({{ $link }})" class="btn btn-info"><i class="fa fa-edit"></i> Edit</button>
+                                            <button type="button" onclick="deleteSocialMedia({{ $link->id }})" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="box-footer no-border"></div>
+                </div>
+            </section>
+            <!-- Social Media Modal -->
+            <div class="modal fade" id="socialMediaModal" tabindex="-1" role="dialog" aria-labelledby="socialMediaModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h3 class="box-title" id="socialMediaModalLabel">Add Social Media Link</h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <form id="socialMediaForm" action="{{ route('save_social_media') }}" method="post">
+                                @csrf
+                                <input type="hidden" id="socialMediaId" name="socialMediaId">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="socialMediaType">Social Media Type</label>
+                                        <select class="form-control" id="socialMediaType" name="socialMediaType">
+                                            <option value="Facebook" data-icon="fa fa-facebook">Facebook</option>
+                                            <option value="Twitter" data-icon="fa-twitter">Twitter</option>
+                                            <option value="Instagram" data-icon="fa-instagram">Instagram</option>
+                                            <!-- Add more options as needed -->
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="socialMediaLink">Link</label>
+                                        <input type="url" class="form-control" id="socialMediaLink" name="socialMediaLink" placeholder="Enter link">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="saveSocialMediaBtn">Save Link</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
           </div>
           <!-- Main row -->
           <!-- /.row (main row) -->
@@ -258,5 +330,45 @@
 
     <!-- AdminLTE for demo purposes -->
     <script src="admin/dist/js/demo.js" type="text/javascript"></script>
+    <script>
+       setTimeout(function() {
+            $('.responsemessage').fadeOut('slow');
+        }, 1000);
+        function editSocialMedia(link) {
+            document.getElementById('socialMediaModalLabel').innerText = 'Edit Social Media Link';
+            document.getElementById('socialMediaId').value = link.id;
+            document.getElementById('socialMediaType').value = link.type;
+            document.getElementById('socialMediaLink').value = link.link;
+
+            document.getElementById('socialMediaForm').action = "{{ route('update_social_media') }}";
+            $('#socialMediaModal').modal('show');
+        }
+
+        var saveBtn = document.getElementById('saveSocialMediaBtn');
+        saveBtn.addEventListener('click', function() {
+            var form = document.getElementById('socialMediaForm');
+            form.submit();
+        });
+
+        function deleteSocialMedia(id) {
+            if (confirm("Are you sure you want to delete this social media link?")) {
+                $.ajax({
+                    url: '/social_media/' + id,
+                    type: 'DELETE',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            alert(response.message);
+                            location.reload();
+                        } else {
+                            alert('Error: ' + response.message);
+                        }
+                    }
+                });
+            }
+        }
+    </script>
   </body>
 </html>

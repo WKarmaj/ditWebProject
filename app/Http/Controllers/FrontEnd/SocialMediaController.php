@@ -1,0 +1,51 @@
+<?php
+
+namespace App\Http\Controllers\FrontEnd;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\t_socialmedia;
+
+class SocialMediaController extends Controller
+{
+    public function save(Request $request)
+    {
+        $request->validate([
+            'socialMediaType' => 'required|string|max:255',
+            'socialMediaLink' => 'required|url',
+        ]);
+
+
+        t_socialmedia::create([
+            'type' => $request->input('socialMediaType'),
+            'link' => $request->input('socialMediaLink'),
+        ]);
+
+        return redirect()->back()->with('message', ['Social media link added successfully!','success']);
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'socialMediaId' => 'required|integer',
+            'socialMediaType' => 'required|string|max:255',
+            'socialMediaLink' => 'required|url',
+        ]);
+
+        $link = t_socialmedia::findOrFail($request->input('socialMediaId'));
+        $link->type = $request->input('socialMediaType');
+        $link->link = $request->input('socialMediaLink');
+        $link->save();
+
+        return redirect()->back()->with('message', ['Social media link updated successfully!','success']);
+    }
+
+    public function delete($id)
+    {
+        $link = t_socialmedia::findOrFail($id);
+        $link->delete();
+
+        return response()->json(['success' => true, 'message' => 'Social media link deleted successfully']);
+    }
+
+}

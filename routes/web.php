@@ -9,9 +9,12 @@ use App\Http\Controllers\administration\EventController;
 use App\Http\Controllers\administration\SliderController;
 use App\Http\Controllers\administration\GoalController;
 use App\Http\Controllers\administration\StudentController;
+use App\Http\Controllers\FrontEnd\SocialMediaController;
+use App\Models\t_socialmedia;
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $socialMediaLinks = t_socialmedia::all();
+    return view('dashboard',compact('socialMediaLinks'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -59,7 +62,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/update', [StudentController::class, 'updateProject'])->name('update_project');
     Route::post('/delete', [StudentController::class, 'deleteProject'])->name('delete_project');
 
-   
+    Route::post('/social_media', [SocialMediaController::class, 'save'])->name('save_social_media');
+    Route::post('/social_media/update', [SocialMediaController::class, 'update'])->name('update_social_media');
+    Route::delete('/social_media/{id}', [SocialMediaController::class, 'delete'])->name('delete_social_media');
 
     
 });

@@ -16,7 +16,7 @@
         <ul class="sidebar-menu">
         
         <li class="treeview">
-            <a href="#">
+            <a href="{{ route('dashboard') }}">
             <i class="fa fa-dashboard"></i> <span></span> MAIN NAVIGATION<i class="fa fa-angle-left pull-right"></i>
             </a>
             
