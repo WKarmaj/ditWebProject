@@ -58,23 +58,39 @@
                         <th>Profile Image</th>
                         <th>Designation</th>
                         <th>Description</th>
+                        <th>Skills</th>
                         <th>Actions</th>
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach($staffs as $i => $staff)
-                        <tr>
-                          <td>{{ $i + 1 }}</td>
-                          <td>{{ $staff->name }}</td>
-                          <td><img src="{{ asset('storage/' . $staff->profile_image) }}" class="profile-user-img img-responsive img-circle" alt="{{ $staff->name }}" width="100" height="100"></td>
-                          <td>{{ $staff->designation }}</td>
-                          <td>{{ $staff->description }}</td>
-                          <td>
-                            <button type="button" onclick="showaction('edit', {{ $staff }})" class="btn btn-info"><i class="fa fa-edit"></i> Edit</button>
-                            <button type="button" onclick="deleteStaff({{ $staff->id }})" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
-                          </td>
-                        </tr>
-                      @endforeach
+                    @foreach($staffs as $i => $staff)
+                      <tr>
+                        <td>{{ $i + 1 }}</td>
+                        <td>{{ $staff->name }}</td>
+                        <td><img src="{{ asset('storage/' . $staff->profile_image) }}" class="profile-user-img img-responsive img-circle" alt="{{ $staff->name }}" width="100" height="100"></td>
+                        <td>{{ $staff->designation }}</td>
+                        <td>{{ $staff->description }}</td>
+                        <td>
+                          @if ($staff->skills)
+                            @foreach(json_decode($staff->skills, true) as $skill)
+                              <div>
+                                <strong>{{ $skill['name'] }}</strong>
+                                <br>
+                                <img src="{{ asset('storage/' . $skill['image']) }}" alt="{{ $skill['name'] }}" width="50" height="50">
+                              </div>
+                            @endforeach
+                          @else
+                            No skills added.
+                          @endif
+                        </td>
+                        <td>
+                          <button type="button" onclick="showaction('edit', {{ $staff }})" class="btn btn-info"><i class="fa fa-edit"></i> Edit</button>
+                          <button type="button" onclick="deleteStaff({{ $staff->id }})" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                        </td>
+                      </tr>
+                    @endforeach
+
+
                     </tbody>
                   </table>
                 </div>
@@ -118,6 +134,20 @@
                     <label for="staffPhoto">Photo:</label>
                     <input type="file" class="form-control-file" id="staffPhoto" name="staffPhoto">
                   </div>
+                  <!-- Skills Section -->
+                  <div id="skillsSection">
+                      <h4>Skills</h4>
+                      <div id="skillsContainer">
+                          <div class="form-group skill-item">
+                              <label for="skillName">Skill Name</label>
+                              <input type="text" class="form-control" name="skills[0][name]" placeholder="Enter skill name">
+                              <label for="skillImage">Skill Image</label>
+                              <input type="file" class="form-control-file" name="skills[0][image]">
+                              <button type="button" class="btn btn-danger remove-skill">Remove</button>
+                          </div>
+                      </div>
+                      <button type="button" class="btn btn-success" id="addSkillBtn">Add Skill</button>
+                  </div>
                 </div>
               </form>
             </div>
@@ -148,75 +178,105 @@
     <script src="admin/dist/js/app.min.js" type="text/javascript"></script>
     <script src="admin/dist/js/demo.js" type="text/javascript"></script>
     <script type="text/javascript">
-      $(function () {
+    $(function () {
         $("#example1").dataTable();
         $('#example2').dataTable({
-          "bPaginate": true,
-          "bLengthChange": false,
-          "bFilter": false,
-          "bSort": true,
-          "bInfo": true,
-          "bAutoWidth": false
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": false
         });
-      });
+    });
 
-      // Hide the alert message after 2 seconds
-      setTimeout(function() {
-          $('.responsemessage').fadeOut('slow');
-        }, 1000);
+    // Hide the alert message after 2 seconds
+    setTimeout(function() {
+        $('.responsemessage').fadeOut('slow');
+    }, 1000);
 
-      function showaction(action, staff) {
+    function showaction(action, staff) {
         if (action === 'edit') {
-          document.getElementById('eventModalLabel').innerText = 'Edit Staff';
-          document.getElementById('staffId').value = staff.id;
-          document.getElementById('staffName').value = staff.name;
-          document.getElementById('staffDesignation').value = staff.designation;
-          document.getElementById('staffDescription').value = staff.description;
+            document.getElementById('eventModalLabel').innerText = 'Edit Staff';
+            document.getElementById('staffId').value = staff.id;
+            document.getElementById('staffName').value = staff.name;
+            document.getElementById('staffDesignation').value = staff.designation;
+            document.getElementById('staffDescription').value = staff.description;
 
-          // Clear the file input field
-          document.getElementById('staffPhoto').value = '';
+            // Clear the file input field
+            document.getElementById('staffPhoto').value = '';
 
-          // Change form action to update route
-          document.getElementById('staffForm').action = "{{ route('update_staff_profile') }}";
+            // Change form action to update route
+            document.getElementById('staffForm').action = "{{ route('update_staff_profile') }}";
         } else {
-          document.getElementById('eventModalLabel').innerText = 'Add Staff';
-          document.getElementById('staffId').value = '';
-          document.getElementById('staffName').value = '';
-          document.getElementById('staffDesignation').value = '';
-          document.getElementById('staffDescription').value = '';
-          document.getElementById('staffPhoto').value = '';
+            document.getElementById('eventModalLabel').innerText = 'Add Staff';
+            document.getElementById('staffId').value = '';
+            document.getElementById('staffName').value = '';
+            document.getElementById('staffDesignation').value = '';
+            document.getElementById('staffDescription').value = '';
+            document.getElementById('staffPhoto').value = '';
 
-          // Change form action to add route
-          document.getElementById('staffForm').action = "{{ route('add_staff_profile') }}";
+            // Change form action to add route
+            document.getElementById('staffForm').action = "{{ route('add_staff_profile') }}";
         }
         $('#staffModal').modal('show');
-      }
+    }
 
-      var saveBtn = document.getElementById('saveStaffBtn');
-      saveBtn.addEventListener('click', function() {
-        var form = document.getElementById('staffForm');
-        form.submit();
-      });
+    var saveBtn = document.getElementById('saveStaffBtn');
+    saveBtn.addEventListener('click', function() {
+        document.getElementById('staffForm').submit();
+    });
 
-      function deleteStaff(staffId) {
+    function deleteStaff(staffId) {
         if (confirm("Are you sure you want to delete this staff?")) {
-          $.ajax({
-            url: '/staff/' + staffId,
-            type: 'DELETE',
-            data: {
-              _token: '{{ csrf_token() }}'
-            },
-            success: function(response) {
-              if (response.success) {
-                alert(response.message);
-                location.reload();
-              } else {
-                alert('Error: ' + response.message);
-              }
-            }
-          });
+            $.ajax({
+                url: '/staff/' + staffId,
+                type: 'DELETE',
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    if (response.success) {
+                        alert(response.message);
+                        location.reload();
+                    } else {
+                        alert('Error: ' + response.message);
+                    }
+                }
+            });
         }
-      }
-    </script>
+    }
+
+    // Additional script for adding skills dynamically
+    var skillCount = 1;
+
+    document.getElementById('addSkillBtn').addEventListener('click', function () {
+        if (skillCount >= 10) {
+            alert('You can only add up to 10 skills.');
+            return;
+        }
+
+        var skillContainer = document.getElementById('skillsContainer');
+        var newSkillItem = document.createElement('div');
+        newSkillItem.classList.add('form-group', 'skill-item');
+        newSkillItem.innerHTML = `
+            <label for="skillName">Skill Name</label>
+            <input type="text" class="form-control" name="skills[${skillCount}][name]" placeholder="Enter skill name">
+            <label for="skillImage">Skill Image</label>
+            <input type="file" class="form-control-file" name="skills[${skillCount}][image]">
+            <button type="button" class="btn btn-danger remove-skill">Remove</button>
+        `;
+        skillContainer.appendChild(newSkillItem);
+        skillCount++;
+
+        // Add event listener to the remove button
+        newSkillItem.querySelector('.remove-skill').addEventListener('click', function () {
+            skillContainer.removeChild(newSkillItem);
+            skillCount--;
+        });
+    });
+
+</script>
+
   </body>
 </html>

@@ -37,6 +37,7 @@
                                         <tr>
                                             <th>SL#</th>
                                             <th>Title</th>
+                                            <th>Highlight</th>
                                             <th>Description</th>
                                             <th>Images</th>
                                             <th>Date</th>
@@ -48,6 +49,7 @@
                                             <tr>
                                                 <td>{{ $i + 1 }}</td>
                                                 <td>{{ $event->title }}</td>
+                                                <td>{{ $event->highlight }}</td>
                                                 <td>{{ $event->description }}</td>
                                                 <td>
                                                     @if ($event->images && count(json_decode($event->images, true)) > 0)
@@ -95,6 +97,10 @@
                                 <div class="form-group">
                                     <label for="eventTitle">Title</label>
                                     <input type="text" class="form-control" id="eventTitle" name="eventTitle" placeholder="Enter title">
+                                </div>
+                                <div class="form-group">
+                                    <label for="eventHighlight">Key Highligts of the Event or News</label>
+                                    <input type="text" class="form-control" id="eventHighlight" name="eventHighlight" placeholder="Enter key point of the event or news">
                                 </div>
                                 <div class="form-group">
                                     <label for="eventDescription">Description</label>
@@ -146,6 +152,7 @@
                 document.getElementById('eventModalLabel').innerText = 'Edit Event';
                 document.getElementById('eventId').value = event.id;
                 document.getElementById('eventTitle').value = event.title;
+                document.getElementById('eventHighlight').value = event.highlight;
                 document.getElementById('eventDescription').value = event.description;
                 document.getElementById('eventDate').value = event.date;
 
@@ -154,6 +161,7 @@
                 document.getElementById('eventModalLabel').innerText = 'Add Event';
                 document.getElementById('eventId').value = '';
                 document.getElementById('eventTitle').value = '';
+                document.getElementById('eventHighlight').value = '';
                 document.getElementById('eventDescription').value = '';
                 document.getElementById('eventDate').value = '';
 

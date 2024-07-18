@@ -70,14 +70,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
-                    <a href="service.html" class="nav-item nav-link">Services</a>
+                    <a href="{{ route('welcome') }}" class="nav-item nav-link active">Home</a>
+                    <a href="{{ route('aboutus') }}" class="nav-item nav-link">About</a>
+                    <a href="" class="nav-item nav-link">Events & News</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Blog</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Faculty</a>
                         <div class="dropdown-menu m-0">
-                            <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                            <a href="detail.html" class="dropdown-item">Blog Detail</a>
+                            <a href="{{ route('faculty.profile') }}" class="dropdown-item">About Faculty</a>
+                            <a href="detail.html" class="dropdown-item">Project & Research</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
@@ -94,6 +94,7 @@
                 </div>
             </div>
         </nav>
+    </div>
     <!--Header Image -->
     
     <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -212,61 +213,6 @@
     <!-- About End -->
 
 
-    <!-- Features Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Why Choose Us</h5>
-                <h1 class="mb-0">We Are Here to Grow Your Business Exponentially</h1>
-            </div>
-            <div class="row g-5">
-                <div class="col-lg-4">
-                    <div class="row g-5">
-                        <div class="col-12 wow zoomIn" data-wow-delay="0.2s">
-                            <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                                <i class="fa fa-cubes text-white"></i>
-                            </div>
-                            <h4>Best In Industry</h4>
-                            <p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
-                        </div>
-                        <div class="col-12 wow zoomIn" data-wow-delay="0.6s">
-                            <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                                <i class="fa fa-award text-white"></i>
-                            </div>
-                            <h4>Award Winning</h4>
-                            <p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4  wow zoomIn" data-wow-delay="0.9s" style="min-height: 350px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.1s" src="img/feature.jpg" style="object-fit: cover;">
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="row g-5">
-                        <div class="col-12 wow zoomIn" data-wow-delay="0.4s">
-                            <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                                <i class="fa fa-users-cog text-white"></i>
-                            </div>
-                            <h4>Professional Staff</h4>
-                            <p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
-                        </div>
-                        <div class="col-12 wow zoomIn" data-wow-delay="0.8s">
-                            <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                                <i class="fa fa-phone-alt text-white"></i>
-                            </div>
-                            <h4>24/7 Support</h4>
-                            <p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Features Start -->
-
-
     <!-- Service Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
@@ -352,92 +298,6 @@
     <!-- Pricing Plan End -->
 
 
-    <!-- Quote Start -->
-        <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s" >
-            <div class="container py-5">
-                <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" >
-                    <h5 class="fw-bold text-primary text-uppercase">Our Vision</h5>
-                    <h4 class="mb-3">Aspire to be the pragmatic department, committed to cultivating an environment of excellence, innovation, and holistic services to empower university students to excel in the diverse field of IT, including Networking, System Administration, System Development, Multimedia & Animation, and Cybersecurity.</h4>
-                </div>
-                <div class="container story position-relative">
-                    <div class="row mb-5 wow fadeInUp" data-wow-delay="0.1s" >
-                        <div class="col-12 text-md-center">
-                            <div class="d-inline-block bg-primary text-white rounded py-2 px-4">Mission</div>
-                        </div>
-                    </div>
-                    <div class="row gx-5 story-right position-relative mb-5 wow fadeInUp" data-wow-delay="0.1s" >
-                        <div class="col-md-6 text-md-end">
-                            <h6 class="fw-bold mb-3 ms-3 ms-md-0">01 </h6>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="story-text position-relative d-inline-block bg-light p-4 ms-3 ms-md-0">
-                                <h4>Quality above Quantity</h4>
-                                <p class="m-0">Prioritizing the cultivation of quality graduates over quantity, ensuring that each student is exceptionally prepared for the dynamic and competitive IT industry</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row gx-5 story-left position-relative mb-5 wow fadeInUp" data-wow-delay="0.1s" >
-                        <div class="col-md-6 d-block d-md-none">
-                            <h6 class="fw-bold mb-3 ms-3 ms-md-0">02</h6>
-                        </div>
-                        <div class="col-md-6 text-md-end">
-                            <div class="story-text position-relative d-inline-block bg-light p-4 ms-3 ms-md-0">
-                                <h4>Skill Focused</h4>
-                                <p class="m-0">Equipping students with the latest technological skills and fostering innovation through hands-on learning, research, and collaboration with industry partners.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 d-none d-md-block">
-                            <h6 class="fw-bold mb-3 ms-3 ms-md-0">02</h6>
-                        </div>
-                    </div>
-
-                    <div class="row gx-5 story-right position-relative mb-5 wow fadeInUp" data-wow-delay="0.1s" >
-                        <div class="col-md-6 text-md-end">
-                            <h6 class="fw-bold mb-3 ms-3 ms-md-0">03</h6>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="story-text position-relative d-inline-block bg-light p-4 ms-3 ms-md-0">
-                                <h4>Sustainability Through Technology</h4>
-                                <p class="m-0">Spearheading the college's journey towards sustainability by developing systems and solutions that lead to a paperless campus, reducing environmental impact and enhancing operational efficiency</p>
-                            </div> 
-                        </div>
-                    </div>
-                    <div class="row gx-5 story-left position-relative mb-5 wow fadeInUp" data-wow-delay="0.1s" >
-                        <div class="col-md-6 d-block d-md-none">
-                            <h6 class="fw-bold mb-3 ms-3 ms-md-0"></h6>
-                        </div>
-                        <div class="col-md-6 text-md-end">
-                            <div class="story-text position-relative d-inline-block bg-light p-4 ms-3 ms-md-0">
-                                <h4>Expansion through Collaboration</h4>
-                                <p class="m-0">Actively engage with global IT communities to promote knowledge sharing, collaboration opportunities, and career opportunities for students</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 d-none d-md-block">
-                            <h6 class="fw-bold mb-3 ms-3 ms-md-0">04</h6>
-                        </div>
-                    </div>
-                    
-                    <div class="row gx-5 story-right position-relative mb-5 wow fadeInUp" data-wow-delay="0.1s" >
-                        <div class="col-md-6 text-md-end">
-                            <h6 class="fw-bold mb-3 ms-3 ms-md-0">05</h6>
-                        </div>  
-                        <div class="col-md-6">
-                            <div class="story-text position-relative d-inline-block bg-light p-4 ms-3 ms-md-0">
-                                <h4> Continuous Upgradation</h4>
-                                <p class="m-0">Committed to ongoing self-assessment and improvement of programmes/courses and services to meet the evolving needs of the students and advancement in the IT industry</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row wow fadeInUp" data-wow-delay="0.1s" >
-                        <div class="col-12 text-md-center">
-                            <div class="d-inline-block bg-primary text-white rounded py-2 px-4">By adhering to these principles, the department not only aims to produce quality IT professionals but also contributes towards the further development of the college and the university.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <!-- Quote End -->
-
 
     <!-- Staff View Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -471,78 +331,35 @@
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Latest Blog</h5>
-                <h1 class="mb-0">Read The Latest Articles from Our Blog Post</h1>
+                <h5 class="fw-bold text-primary text-uppercase">Stay Updated With DIT</h5>
+                <h1 class="mb-0">Read The Latest News and Events from Our Post</h1>
             </div>
             <div class="owl-carousel testimonial-carousel wow fadeInUp">
-                <div class="col-lg-10 wow slideInUp" data-wow-delay="0.3s">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/blog-1.jpg" alt="">
-                            <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="">Web Design</a>
-                        </div>
-                        <div class="p-4">
-                            <div class="d-flex mb-3">
-                                <small class="me-3"><i class="far fa-user text-primary me-2"></i>John Doe</small>
-                                <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</small>
+                @foreach($events as $key => $event)
+                    <div class="col-lg-10 wow slideInUp" data-wow-delay="{{ 0.3 * ($key + 1) }}s">
+                        <div class="blog-item bg-light rounded overflow-hidden">
+                            <div class="blog-img position-relative overflow-hidden">
+                                @if(!empty($event->images))
+                                    @php
+                                        $images = json_decode($event->images);
+                                    @endphp
+                                    @if(isset($images[0]))
+                                        <img class="img-fluid" src="{{ asset('storage/' . $images[0]) }}" alt="">
+                                    @endif
+                                @endif
+                                <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="">{{ $event->highlight }}</a>
                             </div>
-                            <h4 class="mb-3">How to build a website</h4>
-                            <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
-                            <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
+                            <div class="p-4">
+                                <div class="d-flex mb-3">
+                                    <small><i class="far fa-calendar-alt text-primary me-2"></i>{{ \Carbon\Carbon::parse($event->date)->format('d M, Y') }}</small>
+                                </div>
+                                <h4 class="mb-3">{{ $event->title }}</h4>
+                                <p>{{ $event->highlight }}</p>
+                                <a class="text-uppercase" href="{{ route('events.show', $event->id) }}">Read More <i class="bi bi-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-10 wow slideInUp" data-wow-delay="0.6s">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/blog-2.jpg" alt="">
-                            <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="">Web Design</a>
-                        </div>
-                        <div class="p-4">
-                            <div class="d-flex mb-3">
-                                <small class="me-3"><i class="far fa-user text-primary me-2"></i>John Doe</small>
-                                <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</small>
-                            </div>
-                            <h4 class="mb-3">How to build a website</h4>
-                            <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
-                            <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-10 wow slideInUp" data-wow-delay="0.9s">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/blog-3.jpg" alt="">
-                            <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="">Web Design</a>
-                        </div>
-                        <div class="p-4">
-                            <div class="d-flex mb-3">
-                                <small class="me-3"><i class="far fa-user text-primary me-2"></i>John Doe</small>
-                                <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</small>
-                            </div>
-                            <h4 class="mb-3">How to build a website</h4>
-                            <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
-                            <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-10 wow slideInUp" data-wow-delay="0.9s">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/blog-3.jpg" alt="">
-                            <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="">Web Design</a>
-                        </div>
-                        <div class="p-4">
-                            <div class="d-flex mb-3">
-                                <small class="me-3"><i class="far fa-user text-primary me-2"></i>John Doe</small>
-                                <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</small>
-                            </div>
-                            <h4 class="mb-3">How to build a website</h4>
-                            <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
-                            <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -550,23 +367,7 @@
 
 
     <!-- Vendor Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5 mb-5">
-            <div class="bg-white">
-                <div class="owl-carousel vendor-carousel">
-                    <img src="img/vendor-1.jpg" alt="">
-                    <img src="img/vendor-2.jpg" alt="">
-                    <img src="img/vendor-3.jpg" alt="">
-                    <img src="img/vendor-4.jpg" alt="">
-                    <img src="img/vendor-5.jpg" alt="">
-                    <img src="img/vendor-6.jpg" alt="">
-                    <img src="img/vendor-7.jpg" alt="">
-                    <img src="img/vendor-8.jpg" alt="">
-                    <img src="img/vendor-9.jpg" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
+   
     <!-- Vendor End -->
     
 

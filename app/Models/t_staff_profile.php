@@ -17,6 +17,7 @@ class t_staff_profile extends Model
         'designation',
         'description',
         'profile_image',
+         'skills'
        
     ];
 }

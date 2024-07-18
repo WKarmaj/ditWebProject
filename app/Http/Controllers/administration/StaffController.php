@@ -22,6 +22,8 @@ class StaffController extends Controller
             'staffDesignation' => 'required',
             'staffDescription' => 'required',
             'staffPhoto' => 'required|image',
+            'skills.*.name' => 'required_with:skills.*.image',
+            'skills.*.image' => 'required_with:skills.*.name|image',
         ]);
 
         $staff = new t_staff_profile();
@@ -34,23 +36,59 @@ class StaffController extends Controller
             $staff->profile_image = $imagePath;
         }
 
+        // Handle skills
+        $skills = [];
+        if ($request->has('skills')) {
+            foreach ($request->skills as $skill) {
+                $skillImage = $skill['image']->store('skills', 'public');
+                $skills[] = [
+                    'name' => $skill['name'],
+                    'image' => $skillImage,
+                ];
+            }
+        }
+        $staff->skills = $skills;
+
         $staff->save();
 
         return redirect()->back()->with('message', ['Staff added successfully!', 'success']);
     }
+
     public function update(Request $request)
     {
         $staff = t_staff_profile::find($request->staffId);
 
         if ($staff) {
-            $staff->name = $request->staffName;
-            $staff->designation = $request->staffDesignation;
-            $staff->description = $request->staffDescription;
+            $validatedData = $request->validate([
+                'staffName' => 'required',
+                'staffDesignation' => 'required',
+                'staffDescription' => 'required',
+                'staffPhoto' => 'image',
+                'skills.*.name' => 'required_with:skills.*.image',
+                'skills.*.image' => 'required_with:skills.*.name|image',
+            ]);
+
+            $staff->name = $validatedData['staffName'];
+            $staff->designation = $validatedData['staffDesignation'];
+            $staff->description = $validatedData['staffDescription'];
 
             if ($request->hasFile('staffPhoto')) {
                 $path = $request->file('staffPhoto')->store('staff_photos', 'public');
                 $staff->profile_image = $path;
             }
+
+            // Handle skills
+            $skills = [];
+            if ($request->has('skills')) {
+                foreach ($request->skills as $skill) {
+                    $skillImage = $skill['image']->store('skills', 'public');
+                    $skills[] = [
+                        'name' => $skill['name'],
+                        'image' => $skillImage,
+                    ];
+                }
+            }
+            $staff->skills = $skills;
 
             $staff->save();
 

@@ -48,7 +48,6 @@
             <a href="{{ route('view_slider')}}">
             <i class="fa fa-picture-o"></i>
             <span>Home Slider Images</span>
-            <i class="fa fa-angle-left pull-right"></i>
             </a>
         </li>
         <li >

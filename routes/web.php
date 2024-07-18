@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/events/save', [EventController::class, 'saveEvent'])->name('save_event');
     Route::post('/events/update', [EventController::class, 'updateEvent'])->name('update_event');
     Route::delete('/events/{id}', [EventController::class, 'deleteEvent'])->name('delete_event');
+   
     // View slider dashboard
     Route::get('/sliders', [SliderController::class, 'viewSliderPage'])->name('view_slider');
     // Save slider
@@ -67,6 +68,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/social_media/{id}', [SocialMediaController::class, 'delete'])->name('delete_social_media');
 
     
+    
 });
 
 require __DIR__.'/auth.php';
@@ -74,3 +76,7 @@ require __DIR__.'/auth.php';
 Route::get('/', [HomeController::class,'index'])->name('welcome');
 
 Route::get('/aboutus', [HomeController::class,'aboutUs'])->name('aboutus');
+
+Route::get('/blog_details/{id}', [HomeController::class, 'show'])->name('events.show');
+
+Route::get('/faculty/about_faculty', [HomeController::class, 'viewFaculty'])->name('faculty.profile');

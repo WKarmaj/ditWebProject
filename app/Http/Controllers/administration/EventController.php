@@ -18,7 +18,8 @@ class EventController extends Controller
 {
     // Validate the incoming request data
     $validatedData = $request->validate([
-        'eventTitle' => 'required|string|max:255',
+        'eventTitle' => 'required|string',
+        'eventHighlight' => 'required|string',
         'eventDescription' => 'required|string',
         'eventImages.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         'eventDate' => 'required|date',
@@ -36,6 +37,7 @@ class EventController extends Controller
     // Create a new event instance
     $event = new t_event();
     $event->title = $validatedData['eventTitle'];
+    $event->highlight = $validatedData['eventHighlight'];
     $event->description = $validatedData['eventDescription'];
     $event->images = json_encode($imagePaths); // Store image paths as JSON array
     $event->date = $validatedData['eventDate'];
@@ -49,7 +51,8 @@ public function updateEvent(Request $request)
 {
     // Validate the incoming request data
     $validatedData = $request->validate([
-        'eventTitle' => 'required|string|max:255',
+        'eventTitle' => 'required|string',
+        'eventHighlight' => 'required|string',
         'eventDescription' => 'required|string',
         'eventImages.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         'eventDate' => 'required|date',
@@ -73,6 +76,7 @@ public function updateEvent(Request $request)
         }
 
         $event->title = $validatedData['eventTitle'];
+        $event->highlight = $validatedData['eventHighlight'];
         $event->description = $validatedData['eventDescription'];
         $event->date = $validatedData['eventDate'];
         $event->save();
