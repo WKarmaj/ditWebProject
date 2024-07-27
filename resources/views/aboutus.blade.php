@@ -50,9 +50,11 @@
             </div>
             <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.facebook.com/JnecDIT"  target="_blank"><i class="fab fa-facebook-f fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
+                    @foreach($socialMediaLinks as $link)
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="{{ $link->link }}" target="_blank">
+                        <i class="fab fa-{{ ($link->type) }} fw-normal"></i>
+                    </a>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -72,12 +74,12 @@
                 <div class="navbar-nav ms-auto py-0">
                     <a href="{{ route('welcome') }}" class="nav-item nav-link">Home</a>
                     <a href="{{ route('aboutus') }}" class="nav-item nav-link active">About</a>
-                    <a href="service.html" class="nav-item nav-link">Services</a>
+                    <a href="{{ route('get.events') }}" class="nav-item nav-link">Events & News</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Blog</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Faculty</a>
                         <div class="dropdown-menu m-0">
-                            <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                            <a href="detail.html" class="dropdown-item">Blog Detail</a>
+                            <a href="{{ route('faculty.profile') }}" class="dropdown-item">About Faculty</a>
+                            <a href="{{ route('faculty.project') }}" class="dropdown-item">Project & Research</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\FrontEnd;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\t_socialmedia;
-
+use App\Models\t_dit_pro;
 class SocialMediaController extends Controller
 {
     public function save(Request $request)
@@ -47,5 +47,44 @@ class SocialMediaController extends Controller
 
         return response()->json(['success' => true, 'message' => 'Social media link deleted successfully']);
     }
+    public function storeProgramme(Request $request)
+    {
+        $programme = new t_dit_pro();
+        $programme->name = $request->programmeName;
+        $programme->total_students = $request->totalStudents;
+        $programme->save();
+
+        return redirect()->back()->with('message', ['Data added successfully!', 'success']);
+    }
+
+    public function updateProgramme(Request $request)
+    {   
+
+        $programme = t_dit_pro::find($request->programmeId);
+        if($programme){
+            $validatedData = $request->validate([
+                'programmeName' => 'required',
+                'totalStudents' => 'required',
+            ]);
+            $programme->name = $request->programmeName;
+            $programme->total_students = $request->totalStudents;
+            $programme->save();
+        }
+
+        return redirect()->back()->with('message', ['Data updated successfully!', 'success']);
+    }
+
+
+    public function destroyProgramme($id)
+    {
+        $programme = t_dit_pro::find($id);
+        if ($programme) {
+            $programme->delete();
+            return response()->json(['success' => true, 'message' => 'Programme deleted successfully!']);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Programme not found!']);
+        }
+    }
+    
 
 }

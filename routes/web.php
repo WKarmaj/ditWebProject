@@ -10,11 +10,16 @@ use App\Http\Controllers\administration\SliderController;
 use App\Http\Controllers\administration\GoalController;
 use App\Http\Controllers\administration\StudentController;
 use App\Http\Controllers\FrontEnd\SocialMediaController;
+use App\Http\Controllers\administration\CsnController;
 use App\Models\t_socialmedia;
+use App\Models\t_csn_descript;
+use App\Models\t_dit_pro;
 
 Route::get('/dashboard', function () {
     $socialMediaLinks = t_socialmedia::all();
-    return view('dashboard',compact('socialMediaLinks'));
+    $programmes = t_dit_pro::all();
+   
+    return view('dashboard',compact('socialMediaLinks','programmes'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -66,8 +71,24 @@ Route::middleware('auth')->group(function () {
     Route::post('/social_media', [SocialMediaController::class, 'save'])->name('save_social_media');
     Route::post('/social_media/update', [SocialMediaController::class, 'update'])->name('update_social_media');
     Route::delete('/social_media/{id}', [SocialMediaController::class, 'delete'])->name('delete_social_media');
+    Route::get('/programmes', [ProgrammeController::class, 'index'])->name('programmes.index');
 
+    Route::get('/csn_programme', [CsnController::class, 'viewCSNPro'])->name('admin.csn_programme');
     
+
+    // Store a new programme
+    Route::post('/add', [CsnController::class, 'addProgramme'])->name('add_programme');
+
+    // Update an existing programme
+    Route::post('/update', [CsnController::class, 'update'])->name('update_programme');
+
+    // Delete a programme
+    Route::delete('/programme/{id}', [CsnController::class, 'destroy'])->name('delete_programme');
+
+    Route::post('/add_pros_dit', [SocialMediaController::class, 'storeProgramme'])->name('programmes.store');
+    Route::post('/update-programme', [SocialMediaController::class, 'updateProgramme'])->name('update_programme');
+    
+    Route::delete('/programmes/{id}', [SocialMediaController::class, 'destroyProgramme']);
     
 });
 
@@ -80,3 +101,9 @@ Route::get('/aboutus', [HomeController::class,'aboutUs'])->name('aboutus');
 Route::get('/blog_details/{id}', [HomeController::class, 'show'])->name('events.show');
 
 Route::get('/faculty/about_faculty', [HomeController::class, 'viewFaculty'])->name('faculty.profile');
+
+Route::get('/event_grid', [HomeController::class, 'getEvent'])->name('get.events');
+
+Route::get('/faculty/project_research', [HomeController::class, 'viewProjectStaff'])->name('faculty.project');
+
+Route::get('/dcsn/csn', [HomeController::class, 'viewCSN'])->name('dcsn.page');

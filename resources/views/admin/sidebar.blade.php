@@ -36,11 +36,21 @@
         </li>
         <li class="treeview">
             <a href="#">
-            <i class="fa fa-users"></i> <span>Student Section</span>
+            <i class="fa fa-users"></i> <span>Student Project</span>
             <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
             <li><a href="{{ route('admin.csn_project') }}"><i class="fa fa-circle-o"></i>Computer System & Network</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Multimedia & Animation</a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#">
+            <i class="fa fa-users"></i> <span>Programme</span>
+            <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+            <li><a href="{{ route('admin.csn_programme') }}"><i class="fa fa-circle-o"></i>Computer System & Network</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>Multimedia & Animation</a></li>
             </ul>
         </li>

@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DIT - Department of Information Technology</title>
+    <title>Startup - Startup Website Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="{{asset('img/favicon.ico')}}" rel="icon">
+    <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,18 +20,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-
-   
-
     <!-- Libraries Stylesheet -->
-    <link href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
-    <link href="{{asset('lib/animate/animate.min.css')}}" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -40,6 +37,7 @@
         <div class="spinner"></div>
     </div>
     <!-- Spinner End -->
+
 
      <!-- Topbar Start -->
      <div class="container-fluid bg-dark px-5 d-none d-lg-block">
@@ -64,27 +62,29 @@
     </div>
     <!-- Topbar End -->
 
+
     <!-- Navbar Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
             <a href="index.html" class="navbar-brand p-0">
-                <img src="{{asset('img/dit_logo.png')}}" style="max-width: 80px; max-height: 80px; width:auto; height:auto;" alt="">
+                <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>Startup</h1>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0">
+            <div class="navbar-nav ms-auto py-0">
                     <a href="{{ route('welcome') }}" class="nav-item nav-link">Home</a>
-                    <a href="{{ route('aboutus') }}" class="nav-item nav-link ">About</a>
-                    <a href="{{ route('get.events') }}" class="nav-item nav-link ">Events & News</a>
+                    <a href="{{ route('aboutus') }}" class="nav-item nav-link">About</a>
+                    <a href="{{ route('get.events') }}" class="nav-item nav-link active">Events & News</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Faculty</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Faculty</a>
                         <div class="dropdown-menu m-0">
                             <a href="{{ route('faculty.profile') }}" class="dropdown-item">About Faculty</a>
                             <a href="{{ route('faculty.project') }}" class="dropdown-item">Project & Research</a>
                         </div>
                     </div>
+               
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu m-0">
@@ -100,139 +100,90 @@
             </div>
         </nav>
 
-        <div class="container-fluid bg-dark py-5 " style="margin-bottom: 90px;">
+        <div class="container-fluid bg-dark py-5" style="margin-bottom: 90px;">
             <div class="row py-5">
                 <div class="col-12 pt-lg-5 mt-lg-5 text-center">
-                    <h1 class="display-4 text-white animated zoomIn">Meet our Skilled Faculty</h1>
+                    <h1 class="display-4 text-white animated zoomIn">Stay Updated With DIT</h1>
                     <a href="" class="h5 text-white">Home</a>
                     <i class="far fa-circle text-white px-2"></i>
-                    <a href="" class="h5 text-white">Faculty Profile</a>
+                    <a href="" class="h5 text-white">Events & News</a>
                 </div>
             </div>
         </div>
     </div>
     <!-- Navbar End -->
 
-    <!-- HoD -->
-    <div class="container-fluid py-1 wow fadeInUp" data-wow-delay="0.1s">
+    <!-- Blog Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 800px;">
-                <h3 class="mb-0">Head of the Department</h3>
-            </div>
-        </div> 
-    </div>
-    <div class="container-fluid py-1 wow fadeInUp" data-wow-delay="0.2s">
-        <div class="row g-5">
-            @foreach($hodStaff as $staff)
-                <div class="col-md-4 text-center position-relative pb-3 mb-5 mx-auto">
-                    <div class="card user-card wow zoomIn" data-wow-delay="0.9s" style="border-top: none; box-shadow: 0 0 1px 2px rgba(0,0,0,0.05), 0 -2px 1px -2px rgba(0,0,0,0.04), 0 0 0 -1px rgba(0,0,0,0.05); transition: all 150ms linear;">
-                        <div class="card-header" style="background-color: transparent; border-bottom: none; padding: 25px;">
-                            <h5 class="fw-bold text-uppercase">{{ $staff->designation }}</h5>
-                        </div>
-                        <div class="card-block" style="text-align: center; padding: 25px;">
-                            <div class="user-image" style="position: relative; margin: 0 auto; display: inline-block; padding: 5px; width: 210px; height: 210px;">
-                                <img src="{{ asset('storage/' . $staff->profile_image) }}" class="img-radius" alt="User-Profile-Image" style="z-index: 20; position: absolute; top: 5px; left: 5px; width: 200px; height: 200px;">
-                            </div>
-                            <h6 class="fw-bold text-info text-uppercase">{{ $staff->name }}</h6>
-                            
-                            <hr>
-                            <p class="m-t-15 text-muted" style="margin-top: 15px; color: #919aa3 !important;">{{ $staff->description }}</p>
-                            <ul class="list-unstyled activity-leval" style="padding-top: 0;">
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                            </ul>
-                            <h5 class="fw-bold text-uppercase">Proficiency</h5>
-                            <div class="bg-c-blue counter-block m-t-10 p-20" style="background: linear-gradient(45deg,#4099ff,#73b4ff); color: #fff; margin-top: 10px; padding: 20px;">
-                                <div class="row">
-                                    @if ($staff->skills)
-                                        @foreach (json_decode($staff->skills, true) as $skill)
-                                            <div class="col-6">
-                                                <p>{{ $skill['name'] }}</p>
-                                                <img src="{{ asset('storage/' . $skill['image']) }}" alt="{{ $skill['name'] }} image" style="width: 50px; height: 50px;">
-                                            </div>
-                                        @endforeach
-                                    @else
-                                        <div class="col-12">
-                                            <p>No skills added.</p>
+            <div class="row g-5">
+                <div class="col-lg-8">
+                    <div class="row g-5">
+                        @foreach ($events as $event)
+                            <div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
+                                <div class="blog-item bg-light rounded overflow-hidden">
+                                    <div class="blog-img position-relative overflow-hidden">
+                                        <img class="img-fluid" src="{{ asset('storage/' . json_decode($event->images)[0]) }}" alt="">
+                                        <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="">{{ $event->title }}</a>
+                                    </div>
+                                    <div class="p-4">
+                                        <div class="d-flex mb-3">
+                                            <small><i class="far fa-calendar-alt text-primary me-2"></i>{{ $event->date }}</small>
                                         </div>
-                                    @endif
+                                        <h4 class="mb-3">{{ $event->highlight }}</h4>
+                                        <p>{{ $event->description }}</p>
+                                        <a class="text-uppercase" href="{{ route('events.show', $event->id) }}">Read More <i class="bi bi-arrow-right"></i></a>
+                                        
+                                    </div>
                                 </div>
                             </div>
-                            <hr>
-                            <div class="row justify-content-center user-social-link">
-                                
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-
-    <div class="container-fluid py-1 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 800px;">
-                <h3 class="mb-0">Faculty Members</h3>
-            </div>
-        </div> 
-    </div>
-    <!-- Staff Profile -->
-    <div class="container-fluid py-2 wow fadeInUp" data-wow-delay="0.2s">
-        <div class="row g-5">
-            @foreach($facultyStaff as $staff)
-                <div class="col-md-4">
-                    <div class="card user-card wow zoomIn" data-wow-delay="0.9s" style="border-top: none; box-shadow: 0 0 1px 2px rgba(0,0,0,0.05), 0 -2px 1px -2px rgba(0,0,0,0.04), 0 0 0 -1px rgba(0,0,0,0.05); transition: all 150ms linear;">
-                        <div class="card-header" style="background-color: transparent; border-bottom: none; padding: 25px;">
-                            <h5 class="fw-bold text-uppercase">{{ $staff->designation }}</h5>
-                        </div>
-                        <div class="card-block" style="text-align: center; padding: 25px;">
-                            <div class="user-image" style="position: relative; margin: 0 auto; display: inline-block; padding: 5px; width: 210px; height: 210px;">
-                                <img src="{{ asset('storage/' . $staff->profile_image) }}" class="img-radius" alt="User-Profile-Image" style="z-index: 20; position: absolute; top: 5px; left: 5px; width: 200px; height: 200px;">
-                            </div>
-                            <h6 class="fw-bold text-info text-uppercase">{{ $staff->name }}</h6>
-                         
-                            <hr>
-                            <p class="m-t-15 text-muted" style="margin-top: 15px; color: #919aa3 !important;">{{ $staff->description }}</p>
-                            <ul class="list-unstyled activity-leval" style="padding-top: 0;">
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
+                    <div class="col-12 wow slideInUp" data-wow-delay="0.1s">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination pagination-lg m-0">
+                                <li class="page-item disabled">
+                                    <a class="page-link rounded-0" href="#" aria-label="Previous">
+                                        <span aria-hidden="true"><i class="bi bi-arrow-left"></i></span>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link rounded-0" href="#" aria-label="Next">
+                                        <span aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+                                    </a>
+                                </li>
                             </ul>
-                            <h5 class="fw-bold text-uppercase">Proficiency</h5>
-                            <div class="bg-c-blue counter-block m-t-10 p-20" style="background: linear-gradient(45deg,#4099ff,#73b4ff); color: #fff; margin-top: 10px; padding: 20px;">
-                                <div class="row">
-                                    @if ($staff->skills)
-                                        @foreach (json_decode($staff->skills, true) as $skill)
-                                            <div class="col-6">
-                                               
-                                                <p>{{ $skill['name'] }}</p>
-                                                <img src="{{ asset('storage/' . $skill['image']) }}" alt="{{ $skill['name'] }} image" style="width: 50px; height: 50px;">
-                                            </div>
-                                        @endforeach
-                                    @else
-                                        <div class="col-12">
-                                            <p>No skills added.</p>
-                                        </div>
-                                    @endif
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row justify-content-center user-social-link">
-                                
-                            </div>
-                        </div>
+                        </nav>
                     </div>
                 </div>
-            @endforeach
+                <!-- Sidebar Start -->
+                <div class="col-lg-4">  
+                    <!-- Recent Post Start -->
+                    <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
+                        <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                            <h3 class="mb-0">Recent Post</h3>
+                        </div>
+                        @foreach ($recentEvents as $recentEvent)
+                        <div class="d-flex rounded overflow-hidden mb-3">
+                            <img class="img-fluid" src="{{ asset('storage/' . json_decode($recentEvent->images)[0]) }}" style="width: 100px; height: 100px; object-fit: cover;" alt="">
+                            <a href="{{ route('events.show', $event->id) }}" class="h5 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0">{{ Str::limit($recentEvent->title, 50) }}</a>
+                        </div>
+                        @endforeach
+                    </div>
+                    <!-- Recent Post End -->
+                </div>
+                <!-- Sidebar End -->
+            </div>
         </div>
     </div>
+    <!-- Blog End -->
+  
 
 
+<!-- Blog End -->
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
@@ -331,14 +282,14 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{asset('lib/wow/wow.min.js')}}"></script>
-    <script src="{{asset('lib/easing/easing.min.js')}}"></script>
-    <script src="{{asset('lib/waypoints/waypoints.min.js')}}"></script>
-    <script src="{{asset('lib/counterup/counterup.min.js')}}"></script>
-    <script src="{{asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="{{asset('js/main.js')}}"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

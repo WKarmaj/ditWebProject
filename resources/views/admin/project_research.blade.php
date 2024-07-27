@@ -49,7 +49,7 @@
                                                 <td>{{ $i + 1 }}</td>
                                                 <td>{{ $project->title }}</td>
                                                 <td>{{ $project->authors }}</td>
-                                                <td>{{ $project->description }}</td>
+                                                <td style="width: 30%">{{ $project->description }}</td>
                                                 <td>
                                                     @php
                                                         $files = json_decode($project->file, true);

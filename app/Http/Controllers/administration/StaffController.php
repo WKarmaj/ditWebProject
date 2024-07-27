@@ -21,6 +21,7 @@ class StaffController extends Controller
             'staffName' => 'required',
             'staffDesignation' => 'required',
             'staffDescription' => 'required',
+            'staffType' => 'required',
             'staffPhoto' => 'required|image',
             'skills.*.name' => 'required_with:skills.*.image',
             'skills.*.image' => 'required_with:skills.*.name|image',
@@ -30,6 +31,7 @@ class StaffController extends Controller
         $staff->name = $validatedData['staffName'];
         $staff->designation = $validatedData['staffDesignation'];
         $staff->description = $validatedData['staffDescription'];
+        $staff->role = $validatedData['staffType'];
 
         if ($request->hasFile('staffPhoto')) {
             $imagePath = $request->file('staffPhoto')->store('staff_photos', 'public');
@@ -47,7 +49,7 @@ class StaffController extends Controller
                 ];
             }
         }
-        $staff->skills = $skills;
+        $staff->skills = json_encode($skills);
 
         $staff->save();
 
@@ -64,6 +66,7 @@ class StaffController extends Controller
                 'staffDesignation' => 'required',
                 'staffDescription' => 'required',
                 'staffPhoto' => 'image',
+                'staffType' => 'required',
                 'skills.*.name' => 'required_with:skills.*.image',
                 'skills.*.image' => 'required_with:skills.*.name|image',
             ]);
@@ -71,6 +74,7 @@ class StaffController extends Controller
             $staff->name = $validatedData['staffName'];
             $staff->designation = $validatedData['staffDesignation'];
             $staff->description = $validatedData['staffDescription'];
+            $staff->role = $validatedData['staffType'];
 
             if ($request->hasFile('staffPhoto')) {
                 $path = $request->file('staffPhoto')->store('staff_photos', 'public');
@@ -88,7 +92,7 @@ class StaffController extends Controller
                     ];
                 }
             }
-            $staff->skills = $skills;
+            $staff->skills = json_encode($skills);
 
             $staff->save();
 

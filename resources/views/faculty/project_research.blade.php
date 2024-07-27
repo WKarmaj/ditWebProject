@@ -77,7 +77,7 @@
                 <div class="navbar-nav ms-auto py-0">
                     <a href="{{ route('welcome') }}" class="nav-item nav-link">Home</a>
                     <a href="{{ route('aboutus') }}" class="nav-item nav-link ">About</a>
-                    <a href="{{ route('get.events') }}" class="nav-item nav-link ">Events & News</a>
+                    <a href="{{ route('get.events') }}" class="nav-item nav-link">Events & News</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Faculty</a>
                         <div class="dropdown-menu m-0">
@@ -103,134 +103,71 @@
         <div class="container-fluid bg-dark py-5 " style="margin-bottom: 90px;">
             <div class="row py-5">
                 <div class="col-12 pt-lg-5 mt-lg-5 text-center">
-                    <h1 class="display-4 text-white animated zoomIn">Meet our Skilled Faculty</h1>
+                    <h1 class="display-4 text-white animated zoomIn"></h1>
                     <a href="" class="h5 text-white">Home</a>
                     <i class="far fa-circle text-white px-2"></i>
-                    <a href="" class="h5 text-white">Faculty Profile</a>
+                    <a href="" class="h5 text-white">Projects & Research</a>
                 </div>
             </div>
         </div>
     </div>
     <!-- Navbar End -->
 
-    <!-- HoD -->
-    <div class="container-fluid py-1 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 800px;">
-                <h3 class="mb-0">Head of the Department</h3>
-            </div>
-        </div> 
-    </div>
-    <div class="container-fluid py-1 wow fadeInUp" data-wow-delay="0.2s">
-        <div class="row g-5">
-            @foreach($hodStaff as $staff)
-                <div class="col-md-4 text-center position-relative pb-3 mb-5 mx-auto">
-                    <div class="card user-card wow zoomIn" data-wow-delay="0.9s" style="border-top: none; box-shadow: 0 0 1px 2px rgba(0,0,0,0.05), 0 -2px 1px -2px rgba(0,0,0,0.04), 0 0 0 -1px rgba(0,0,0,0.05); transition: all 150ms linear;">
-                        <div class="card-header" style="background-color: transparent; border-bottom: none; padding: 25px;">
-                            <h5 class="fw-bold text-uppercase">{{ $staff->designation }}</h5>
-                        </div>
-                        <div class="card-block" style="text-align: center; padding: 25px;">
-                            <div class="user-image" style="position: relative; margin: 0 auto; display: inline-block; padding: 5px; width: 210px; height: 210px;">
-                                <img src="{{ asset('storage/' . $staff->profile_image) }}" class="img-radius" alt="User-Profile-Image" style="z-index: 20; position: absolute; top: 5px; left: 5px; width: 200px; height: 200px;">
-                            </div>
-                            <h6 class="fw-bold text-info text-uppercase">{{ $staff->name }}</h6>
-                            
-                            <hr>
-                            <p class="m-t-15 text-muted" style="margin-top: 15px; color: #919aa3 !important;">{{ $staff->description }}</p>
-                            <ul class="list-unstyled activity-leval" style="padding-top: 0;">
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                            </ul>
-                            <h5 class="fw-bold text-uppercase">Proficiency</h5>
-                            <div class="bg-c-blue counter-block m-t-10 p-20" style="background: linear-gradient(45deg,#4099ff,#73b4ff); color: #fff; margin-top: 10px; padding: 20px;">
-                                <div class="row">
-                                    @if ($staff->skills)
-                                        @foreach (json_decode($staff->skills, true) as $skill)
-                                            <div class="col-6">
-                                                <p>{{ $skill['name'] }}</p>
-                                                <img src="{{ asset('storage/' . $skill['image']) }}" alt="{{ $skill['name'] }} image" style="width: 50px; height: 50px;">
-                                            </div>
-                                        @endforeach
-                                    @else
-                                        <div class="col-12">
-                                            <p>No skills added.</p>
-                                        </div>
-                                    @endif
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row justify-content-center user-social-link">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
+      <!-- Project Start -->
+        <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <!-- Project List Start -->
+                    <div class="col-lg-8">
+                        <div class="row g-5">
+                            @foreach($projects as $project)
+                                <div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
+                                    <div class="blog-item bg-light rounded overflow-hidden">
+                                        <div class="blog-img position-relative overflow-hidden">
+                                           </i><h4 class="mb-3">{{ $project->title }}</h4>
 
-    <div class="container-fluid py-1 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 800px;">
-                <h3 class="mb-0">Faculty Members</h3>
-            </div>
-        </div> 
-    </div>
-    <!-- Staff Profile -->
-    <div class="container-fluid py-2 wow fadeInUp" data-wow-delay="0.2s">
-        <div class="row g-5">
-            @foreach($facultyStaff as $staff)
-                <div class="col-md-4">
-                    <div class="card user-card wow zoomIn" data-wow-delay="0.9s" style="border-top: none; box-shadow: 0 0 1px 2px rgba(0,0,0,0.05), 0 -2px 1px -2px rgba(0,0,0,0.04), 0 0 0 -1px rgba(0,0,0,0.05); transition: all 150ms linear;">
-                        <div class="card-header" style="background-color: transparent; border-bottom: none; padding: 25px;">
-                            <h5 class="fw-bold text-uppercase">{{ $staff->designation }}</h5>
-                        </div>
-                        <div class="card-block" style="text-align: center; padding: 25px;">
-                            <div class="user-image" style="position: relative; margin: 0 auto; display: inline-block; padding: 5px; width: 210px; height: 210px;">
-                                <img src="{{ asset('storage/' . $staff->profile_image) }}" class="img-radius" alt="User-Profile-Image" style="z-index: 20; position: absolute; top: 5px; left: 5px; width: 200px; height: 200px;">
-                            </div>
-                            <h6 class="fw-bold text-info text-uppercase">{{ $staff->name }}</h6>
-                         
-                            <hr>
-                            <p class="m-t-15 text-muted" style="margin-top: 15px; color: #919aa3 !important;">{{ $staff->description }}</p>
-                            <ul class="list-unstyled activity-leval" style="padding-top: 0;">
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                            </ul>
-                            <h5 class="fw-bold text-uppercase">Proficiency</h5>
-                            <div class="bg-c-blue counter-block m-t-10 p-20" style="background: linear-gradient(45deg,#4099ff,#73b4ff); color: #fff; margin-top: 10px; padding: 20px;">
-                                <div class="row">
-                                    @if ($staff->skills)
-                                        @foreach (json_decode($staff->skills, true) as $skill)
-                                            <div class="col-6">
-                                               
-                                                <p>{{ $skill['name'] }}</p>
-                                                <img src="{{ asset('storage/' . $skill['image']) }}" alt="{{ $skill['name'] }} image" style="width: 50px; height: 50px;">
-                                            </div>
-                                        @endforeach
-                                    @else
-                                        <div class="col-12">
-                                            <p>No skills added.</p>
                                         </div>
-                                    @endif
+                                        <div class="p-4">
+                                            <div class="d-flex mb-3">
+                                                <small class="me-3"><i class="far fa-user text-primary me-2"></i>{{ $project->authors }}</small>
+                                            </div>
+                                            <p>{{ $project->description }}</p>
+                                            <div class="project-files mt-3">
+                                                <h5>Files:</h5>
+                                                @if($project->file)
+                                                    @php
+                                                        $files = json_decode($project->file, true);
+                                                    @endphp
+                                                    @if(is_array($files))
+                                                        @foreach($files as $file)
+                                                            @if(is_array($file) && isset($file['path']) && isset($file['original_name']))
+                                                                <div class="file-item mb-2">
+                                                                    <a href="{{ asset('storage/' . $file['path']) }}" class="text-decoration-none" target="_blank">
+                                                                        <i class="far fa-file-pdf text-danger me-2"></i>{{ $file['original_name'] }}
+                                                                    </a>
+                                                                </div>
+                                                            @endif
+                                                        @endforeach
+                                                    @else
+                                                        <p>No files available.</p>
+                                                    @endif
+                                                @else
+                                                    <p>No files available.</p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <hr>
-                            <div class="row justify-content-center user-social-link">
-                                
-                            </div>
+                            @endforeach
                         </div>
                     </div>
+                    <!-- Project List End -->
                 </div>
-            @endforeach
+            </div>
         </div>
-    </div>
+        <!-- Project End -->
+
+   
 
 
     <!-- Footer Start -->

@@ -69,7 +69,7 @@
                         <td>{{ $staff->name }}</td>
                         <td><img src="{{ asset('storage/' . $staff->profile_image) }}" class="profile-user-img img-responsive img-circle" alt="{{ $staff->name }}" width="100" height="100"></td>
                         <td>{{ $staff->designation }}</td>
-                        <td>{{ $staff->description }}</td>
+                        <td style="width: 30%">{{ $staff->description }}</td>
                         <td>
                           @if ($staff->skills)
                             @foreach(json_decode($staff->skills, true) as $skill)
@@ -133,6 +133,13 @@
                   <div class="form-group">
                     <label for="staffPhoto">Photo:</label>
                     <input type="file" class="form-control-file" id="staffPhoto" name="staffPhoto">
+                  </div>
+                  <div class="form-group">
+                    <label for="staffType">Select Role</label>
+                    <select class="form-control" id="staffType" name="staffType">
+                          <option value="HoD">HoD</option>
+                          <option value="Faculty">Faculty</option>
+                      </select>
                   </div>
                   <!-- Skills Section -->
                   <div id="skillsSection">
@@ -202,7 +209,7 @@
             document.getElementById('staffName').value = staff.name;
             document.getElementById('staffDesignation').value = staff.designation;
             document.getElementById('staffDescription').value = staff.description;
-
+            document.getElementById('staffType').value = staff.role;
             // Clear the file input field
             document.getElementById('staffPhoto').value = '';
 
@@ -214,6 +221,7 @@
             document.getElementById('staffName').value = '';
             document.getElementById('staffDesignation').value = '';
             document.getElementById('staffDescription').value = '';
+            document.getElementById('staffType').value = '';
             document.getElementById('staffPhoto').value = '';
 
             // Change form action to add route

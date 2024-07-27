@@ -5,8 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class t_event extends Model
+class t_csn_descript extends Model
 {
     use HasFactory;
-     protected $dates = ['date'];
+
+    protected $fillable = [
+        'description',
+        'image',
+    ];
 }

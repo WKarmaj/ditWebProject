@@ -19,7 +19,9 @@
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- WOW.js -->
 
    
 
@@ -32,6 +34,28 @@
 
     <!-- Template Stylesheet -->
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <style>
+       .arrow-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .arrow-container i {
+            font-size: 24px;
+            color: #000;
+        }
+
+        .subcontainer-content ol {
+            padding-left: 20px;
+        }
+
+        .subcontainer {
+            position: relative;
+        }
+
+
+
+    </style>
 </head>
 
 <body>
@@ -53,11 +77,9 @@
             </div>
             <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    @foreach($socialMediaLinks as $link)
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="{{ $link->link }}" target="_blank">
-                        <i class="fab fa-{{ ($link->type) }} fw-normal"></i>
-                    </a>
-                    @endforeach
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.facebook.com/JnecDIT"  target="_blank"><i class="fab fa-facebook-f fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
                 </div>
             </div>
         </div>
@@ -79,20 +101,17 @@
                     <a href="{{ route('aboutus') }}" class="nav-item nav-link ">About</a>
                     <a href="{{ route('get.events') }}" class="nav-item nav-link ">Events & News</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Faculty</a>
+                        <a href="#" class="nav-link dropdown-toggle " data-bs-toggle="dropdown">Faculty</a>
                         <div class="dropdown-menu m-0">
                             <a href="{{ route('faculty.profile') }}" class="dropdown-item">About Faculty</a>
                             <a href="{{ route('faculty.project') }}" class="dropdown-item">Project & Research</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                        <a href="#" class="nav-link active dropdown-toggle" data-bs-toggle="dropdown">Programme</a>
                         <div class="dropdown-menu m-0">
-                            <a href="price.html" class="dropdown-item">Pricing Plan</a>
-                            <a href="feature.html" class="dropdown-item">Our features</a>
-                            <a href="team.html" class="dropdown-item">Team Members</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="quote.html" class="dropdown-item">Free Quote</a>
+                            <a href="{{route('dcsn.page')}}" class="dropdown-item">Computer System & Network</a>
+                            <a href="feature.html" class="dropdown-item">Multimedia & Animation</a>
                         </div>
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
@@ -103,134 +122,150 @@
         <div class="container-fluid bg-dark py-5 " style="margin-bottom: 90px;">
             <div class="row py-5">
                 <div class="col-12 pt-lg-5 mt-lg-5 text-center">
-                    <h1 class="display-4 text-white animated zoomIn">Meet our Skilled Faculty</h1>
+                    <h1 class="display-4 text-white animated zoomIn">Diploma in Computer System and Network </h1>
                     <a href="" class="h5 text-white">Home</a>
                     <i class="far fa-circle text-white px-2"></i>
-                    <a href="" class="h5 text-white">Faculty Profile</a>
+                    <a href="" class="h5 text-white">Programme</a>
                 </div>
             </div>
         </div>
     </div>
     <!-- Navbar End -->
-
-    <!-- HoD -->
-    <div class="container-fluid py-1 wow fadeInUp" data-wow-delay="0.1s">
+   <!-- Features Start -->
+   <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 800px;">
-                <h3 class="mb-0">Head of the Department</h3>
-            </div>
-        </div> 
-    </div>
-    <div class="container-fluid py-1 wow fadeInUp" data-wow-delay="0.2s">
-        <div class="row g-5">
-            @foreach($hodStaff as $staff)
-                <div class="col-md-4 text-center position-relative pb-3 mb-5 mx-auto">
-                    <div class="card user-card wow zoomIn" data-wow-delay="0.9s" style="border-top: none; box-shadow: 0 0 1px 2px rgba(0,0,0,0.05), 0 -2px 1px -2px rgba(0,0,0,0.04), 0 0 0 -1px rgba(0,0,0,0.05); transition: all 150ms linear;">
-                        <div class="card-header" style="background-color: transparent; border-bottom: none; padding: 25px;">
-                            <h5 class="fw-bold text-uppercase">{{ $staff->designation }}</h5>
+            <!-- About Programme -->
+            <div class="row g-5">
+                <!-- First Column (Left) -->
+                <div class="col-lg-4">
+                    <div class="row g-5">
+                        @foreach($programmes->take($programmes->count() / 2) as $i => $programme)
+                        <div class="col-12 wow zoomIn" data-wow-delay="{{ 0.2 + ($i * 0.4) }}s">
+                            <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <img src="{{ asset('storage/programmes/' . $programme->image) }}" style="width: 60px; height: 60px;">
+                            </div>
+                            <p class="mb-0">{{ $programme->description }}</p>
                         </div>
-                        <div class="card-block" style="text-align: center; padding: 25px;">
-                            <div class="user-image" style="position: relative; margin: 0 auto; display: inline-block; padding: 5px; width: 210px; height: 210px;">
-                                <img src="{{ asset('storage/' . $staff->profile_image) }}" class="img-radius" alt="User-Profile-Image" style="z-index: 20; position: absolute; top: 5px; left: 5px; width: 200px; height: 200px;">
+                        @endforeach
+                    </div>
+                </div>
+
+                <!-- Center Image Column -->
+                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.9s" style="min-height: 450px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.1s" src="{{ asset('img/dit_logo.png') }}" style="object-fit: cover;">
+                    </div>
+                </div>
+
+                <!-- Third Column (Right) -->
+                <div class="col-lg-4">
+                    <div class="row g-5">
+                        @foreach($programmes->skip($programmes->count() / 2) as $i => $programme)
+                        <div class="col-12 wow zoomIn" data-wow-delay="{{ 0.4 + ($i * 0.4) }}s">
+                            <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <img src="{{ asset('storage/programmes/' . $programme->image) }}" style="width: 60px; height: 60px;">
                             </div>
-                            <h6 class="fw-bold text-info text-uppercase">{{ $staff->name }}</h6>
-                            
-                            <hr>
-                            <p class="m-t-15 text-muted" style="margin-top: 15px; color: #919aa3 !important;">{{ $staff->description }}</p>
-                            <ul class="list-unstyled activity-leval" style="padding-top: 0;">
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                            </ul>
-                            <h5 class="fw-bold text-uppercase">Proficiency</h5>
-                            <div class="bg-c-blue counter-block m-t-10 p-20" style="background: linear-gradient(45deg,#4099ff,#73b4ff); color: #fff; margin-top: 10px; padding: 20px;">
-                                <div class="row">
-                                    @if ($staff->skills)
-                                        @foreach (json_decode($staff->skills, true) as $skill)
-                                            <div class="col-6">
-                                                <p>{{ $skill['name'] }}</p>
-                                                <img src="{{ asset('storage/' . $skill['image']) }}" alt="{{ $skill['name'] }} image" style="width: 50px; height: 50px;">
-                                            </div>
-                                        @endforeach
-                                    @else
-                                        <div class="col-12">
-                                            <p>No skills added.</p>
-                                        </div>
-                                    @endif
+                            <p class="mb-0">{{ $programme->description }}</p>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+            <!-- Container Section -->
+            <div class="section-title text-center position-relative pb-3 mb-6 mx-auto" style="max-width: 600px; top: 50px;">
+                <h5 class="fw-bold text-primary text-uppercase"></h5>
+                <h1 class="fw-bold text-primary text-uppercase">Focus Area</h1>
+            </div>
+            <div class="row g-5 mt-5">
+                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.1s">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img class="card-img-top" src="{{ asset('img/feature.jpg') }}" alt="Container 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Network Administration</h5>
+                            <!-- Subcontainer -->
+                            <div class="subcontainer tree-root">
+                                <div class="subcontainer-content">
+                                    <ol>
+                                        <li>Introduction to Networks</li>
+                                        <li>Switching, Routing, and Wireless Essentials</li>
+                                        <li>Structured Cabling</li>
+                                        <li>Enterprise Networking, Security, and Automation</li>
+                                        <li>Applied Network Security</li>
+                                        <li>Ethical Hacking</li>
+                                    </ol>
                                 </div>
-                            </div>
-                            <hr>
-                            <div class="row justify-content-center user-social-link">
-                                
                             </div>
                         </div>
                     </div>
+                    <div class="arrow-container">
+                        <i class="fa fa-arrow-down"></i>
+                    </div>
                 </div>
-            @endforeach
-        </div>
-    </div>
-
-    <div class="container-fluid py-1 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 800px;">
-                <h3 class="mb-0">Faculty Members</h3>
-            </div>
-        </div> 
-    </div>
-    <!-- Staff Profile -->
-    <div class="container-fluid py-2 wow fadeInUp" data-wow-delay="0.2s">
-        <div class="row g-5">
-            @foreach($facultyStaff as $staff)
-                <div class="col-md-4">
-                    <div class="card user-card wow zoomIn" data-wow-delay="0.9s" style="border-top: none; box-shadow: 0 0 1px 2px rgba(0,0,0,0.05), 0 -2px 1px -2px rgba(0,0,0,0.04), 0 0 0 -1px rgba(0,0,0,0.05); transition: all 150ms linear;">
-                        <div class="card-header" style="background-color: transparent; border-bottom: none; padding: 25px;">
-                            <h5 class="fw-bold text-uppercase">{{ $staff->designation }}</h5>
-                        </div>
-                        <div class="card-block" style="text-align: center; padding: 25px;">
-                            <div class="user-image" style="position: relative; margin: 0 auto; display: inline-block; padding: 5px; width: 210px; height: 210px;">
-                                <img src="{{ asset('storage/' . $staff->profile_image) }}" class="img-radius" alt="User-Profile-Image" style="z-index: 20; position: absolute; top: 5px; left: 5px; width: 200px; height: 200px;">
-                            </div>
-                            <h6 class="fw-bold text-info text-uppercase">{{ $staff->name }}</h6>
-                         
-                            <hr>
-                            <p class="m-t-15 text-muted" style="margin-top: 15px; color: #919aa3 !important;">{{ $staff->description }}</p>
-                            <ul class="list-unstyled activity-leval" style="padding-top: 0;">
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                                <li class="active" style="display: inline-block; width: 15%; height: 4px; margin: 0 3px; background-color: #2ed8b6;"></li>
-                            </ul>
-                            <h5 class="fw-bold text-uppercase">Proficiency</h5>
-                            <div class="bg-c-blue counter-block m-t-10 p-20" style="background: linear-gradient(45deg,#4099ff,#73b4ff); color: #fff; margin-top: 10px; padding: 20px;">
-                                <div class="row">
-                                    @if ($staff->skills)
-                                        @foreach (json_decode($staff->skills, true) as $skill)
-                                            <div class="col-6">
-                                               
-                                                <p>{{ $skill['name'] }}</p>
-                                                <img src="{{ asset('storage/' . $skill['image']) }}" alt="{{ $skill['name'] }} image" style="width: 50px; height: 50px;">
-                                            </div>
-                                        @endforeach
-                                    @else
-                                        <div class="col-12">
-                                            <p>No skills added.</p>
-                                        </div>
-                                    @endif
+                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img class="card-img-top" src="{{ asset('img/feature.jpg') }}" alt="Container 2">
+                        <div class="card-body">
+                            <h5 class="card-title">System Design & Development</h5>
+                            <!-- Subcontainer -->
+                            <div class="subcontainer tree-root">
+                                <div class="subcontainer-content">
+                                    <ol>
+                                        <li>Introduction to Networks</li>
+                                        <li>Switching, Routing, and Wireless Essentials</li>
+                                        <li>Structured Cabling</li>
+                                        <li>Enterprise Networking, Security, and Automation</li>
+                                        <li>Applied Network Security</li>
+                                        <li>Ethical Hacking</li>
+                                    </ol>
                                 </div>
-                            </div>
-                            <hr>
-                            <div class="row justify-content-center user-social-link">
-                                
                             </div>
                         </div>
                     </div>
+                    <div class="arrow-container">
+                        <i class="fa fa-arrow-down"></i>
+                    </div>
                 </div>
-            @endforeach
+                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.5s">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img class="card-img-top" src="{{ asset('img/feature.jpg') }}" alt="Container 3">
+                        <div class="card-body">
+                            <h5 class="card-title">System Administration</h5>
+                            <!-- Subcontainer -->
+                            <div class="subcontainer tree-root">
+                                <div class="subcontainer-content">
+                                    <ol>
+                                        <li>Introduction to Networks</li>
+                                        <li>Switching, Routing, and Wireless Essentials</li>
+                                        <li>Structured Cabling</li>
+                                        <li>Enterprise Networking, Security, and Automation</li>
+                                        <li>Applied Network Security</li>
+                                        <li>Ethical Hacking</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="arrow-container">
+                        <i class="fa fa-arrow-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Container End -->
+            <div class="row g-6 mt-5">
+                <div class="col-lg-10 wow zoomIn" data-wow-delay="0.1s" style="margin-left: 100px;">
+                    <div class=" h-80 border-0 shadow-sm">
+                        <div class="position-relative h-100">
+                            <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.1s" src="{{ asset('img/feature.jpg') }}" style="object-fit: cover;">
+                        </div>
+                        <h5 class="card-title text-center">CPR201 Capstone Project</h5>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <!-- Features End -->
 
 
     <!-- Footer Start -->
@@ -331,14 +366,18 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
     <script src="{{asset('lib/wow/wow.min.js')}}"></script>
     <script src="{{asset('lib/easing/easing.min.js')}}"></script>
     <script src="{{asset('lib/waypoints/waypoints.min.js')}}"></script>
     <script src="{{asset('lib/counterup/counterup.min.js')}}"></script>
     <script src="{{asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
-
     <!-- Template Javascript -->
     <script src="{{asset('js/main.js')}}"></script>
+    <script>
+        new WOW().init();
+
+    </script>
 </body>
 
 </html>
