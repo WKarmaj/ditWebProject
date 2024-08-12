@@ -4,38 +4,35 @@ namespace App\Http\Controllers\administration;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\t_csn_descript;
+use App\Models\t_dmaprogramme;
 
-class CsnController extends Controller
+class DmaController extends Controller
 {
-    public function viewCSNPro()
+    public function viewDMA()
     {
-        $programmes = t_csn_descript::all();
-        return view('admin.csn_programme',compact('programmes'));
+        $programmes = t_dmaprogramme::all();
+        return view ('admin.dma_programme',compact('programmes'));
     }
-
-    public function addProgramme(Request $request) {
-        $programme = new t_csn_descript();
+    public function addDMAProgramme(Request $request) {
+        $programme = new t_dmaprogramme();
         $programme->description = $request->programmeDescription;
         if ($request->hasFile('programmeImage')) {
-            $programme->image = $request->file('programmeImage')->store('programmes', 'public');
+            $programme->image = $request->file('programmeImage')->store('dmaprogrammes', 'public');
         }
         $programme->save();
         return redirect()->back()->with('message', ['Data added successfully', 'success']);
     }
-    
-    public function editProgramme(Request $request) {
-        $programme = t_csn_descript::find($request->programmeId);
+    public function editDMAProgramme(Request $request) {
+        $programme = t_dmaprogramme::find($request->programmeId);
         $programme->description = $request->programmeDescription;
         if ($request->hasFile('programmeImage')) {
-            $programme->image = $request->file('programmeImage')->store('programmes', 'public');
+            $programme->image = $request->file('programmeImage')->store('dmaprogrammes', 'public');
         }
         $programme->save();
         return redirect()->back()->with('message', ['Data edited successfully', 'success']);
     }
-    
-    public function deleteProgramme(Request $request, $id) {
-        $programme = t_csn_descript::find($id); // Use the $id directly
+    public function deleteDMAProgramme(Request $request, $id) {
+        $programme = t_dmaprogramme::find($id); // Use the $id directly
         if ($programme) {
             \Storage::delete('public/' . $programme->image);
             $programme->delete();

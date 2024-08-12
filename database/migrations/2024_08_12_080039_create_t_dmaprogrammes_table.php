@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('t_focus_areas', function (Blueprint $table) {
+        Schema::create('t_dmaprogrammes', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->text('description');
-            $table->string('image');
-            $table->json('key_points');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('t_focus_areas');
+        Schema::dropIfExists('t_dmaprogrammes');
     }
 };

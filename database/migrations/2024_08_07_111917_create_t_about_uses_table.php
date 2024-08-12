@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('t_header_images', function (Blueprint $table) {
+        Schema::create('t_about_us', function (Blueprint $table) {
             $table->id();
+            $table->string('main_points');
+            $table->text('description');
+            $table->string('image');
+            $table->json('short_points');
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('t_header_images');
+        Schema::dropIfExists('t_about_us');
     }
 };

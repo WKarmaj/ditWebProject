@@ -12,7 +12,5 @@ class t_csn extends Model
     protected $table = 't_csns'; // Your table name
     protected $fillable = ['title', 'authors', 'description', 'files'];
 
-    protected $casts = [
-        'files' => 'array',
-    ];
+  
 }

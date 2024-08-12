@@ -204,7 +204,48 @@
                     <div class="box-footer no-border"></div>
                 </div>
             </section>
+            <!--About Us -->
+            <section class="col-lg-6 connectedSortable">
+                <div class="box box-success">
+                    <div class="box-header">
+                        <div class="pull-right box-tools">
+                            <button class="btn btn-primary btn-sm pull-right" data-widget='collapse' data-toggle="tooltip" title="Collapse" style="margin-right: 5px;"><i class="fa fa-minus"></i></button>
+                        </div>
+                        <i class="fa fa-globe"></i>
+                        <h3 class="box-title">Edit About Us Data</h3>
+                    </div>
+                    <div class="box-body">
+                        <button data-toggle="modal" data-target="#aboutUsModal" class="btn btn-dark btn-bitbucket text-white btn-sm"><i class="fa fa-plus"></i> Add New</button>
+                        <table id="about_us_table" class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>SL#</th>
+                                <th>Main Points</th>
+                                <th>Description</th>
+                                <th>Image</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($aboutUs as $i => $about)
+                                <tr>
+                                    <td>{{ $i + 1 }}</td>
+                                    <td>{{ $about->main_points }}</td>
+                                    <td style="width: 30%">{{ $about->description }}</td>
+                                    <td><img src="{{ asset('storage/' . $about->image) }}" alt="About Us Image" style="width: 30%"></td>
 
+                                    <td>
+                                    <button type="button" onclick="showAction('edit', {{ $about }})" class="btn btn-info"><i class="fa fa-edit"></i> Edit</button>
+                                    <button type="button" onclick="deleteAboutUs({{ $about->id }})" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="box-footer no-border"></div>
+                </div>
+            </section>
             <!-- Social Media Modal -->
             <div class="modal fade" id="socialMediaModal" tabindex="-1" role="dialog" aria-labelledby="socialMediaModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -283,9 +324,47 @@
                     </div>
                 </div>
             </div>
-
-         
             
+            <!-- About Us -->
+            <div class="modal fade" id="aboutUsModal" tabindex="-1" role="dialog" aria-labelledby="aboutUsModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="box box-primary">
+                    <div class="box-header">
+                        <h3 class="box-title" id="aboutUsModalLabel">Add About Us</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    </div>
+                    <div class="modal-body">
+                    <form id="aboutUsForm" action="{{ route('add_about_us') }}" role="form" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" id="aboutUsId" name="aboutUsId">
+                        <div class="box-body">
+                        <div class="form-group">
+                            <label for="mainPoints">Main Points</label>
+                            <input type="text" class="form-control" id="mainPoints" name="mainPoints" placeholder="Enter main points">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image</label>
+                            <input type="file" class="form-control-file" id="image" name="image">
+                        </div>
+                        
+                        </div>
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveAboutUsBtn">Save About Us</button>
+                    </div>
+                </div>
+                </div>
+            </div> 
           </div>
           <!-- Main row -->
           <!-- /.row (main row) -->
@@ -412,7 +491,56 @@
               });
           }
       }
+      function showAction(action, about) {
+        if (action === 'edit') {
+            document.getElementById('aboutUsModalLabel').innerText = 'Edit About Us';
+            document.getElementById('aboutUsId').value = about.id;
+            document.getElementById('mainPoints').value = about.main_points;
+            document.getElementById('description').value = about.description;
+            // Clear the file input field
+            document.getElementById('image').value = '';
+
+            // Change form action to update route
+            document.getElementById('aboutUsForm').action = "{{ route('update_about_us')}}";
+        } else {
+            document.getElementById('aboutUsModalLabel').innerText = 'Add About Us';
+            document.getElementById('aboutUsId').value = '';
+            document.getElementById('mainPoints').value = '';
+            document.getElementById('description').value = '';
+            document.getElementById('image').value = '';
+
+            // Change form action to add route
+            document.getElementById('aboutUsForm').action = "{{ route('add_about_us') }}";
+        }
+        $('#aboutUsModal').modal('show');
+    }
+
+    var saveBtn = document.getElementById('saveAboutUsBtn');
+    saveBtn.addEventListener('click', function() {
+        document.getElementById('aboutUsForm').submit();
+    });
+
+    function deleteAboutUs(aboutUsId) {
+        if (confirm("Are you sure you want to delete this entry?")) {
+            $.ajax({
+                url: '/about-us/' + aboutUsId,
+                type: 'DELETE',
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    if (response.success) {
+                        alert(response.message);
+                        location.reload();
+                    } else {
+                        alert('Error: ' + response.message);
+                    }
+                }
+            });
+        }
+    }
 
     </script>
   </body>
 </html>
+ 

@@ -111,57 +111,58 @@
     <!-- Navbar End -->
 
       <!-- Project Start -->
-        <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+      <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
             <div class="container py-5">
                 <div class="row g-5">
                     <!-- Project List Start -->
                     <div class="col-lg-8">
                         <div class="row g-5">
-                            @foreach($projects as $project)
-                                <div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
-                                    <div class="blog-item bg-light rounded overflow-hidden">
-                                        <div class="blog-img position-relative overflow-hidden">
-                                           </i><h4 class="mb-3">{{ $project->title }}</h4>
-
+                        @foreach($csnproject as $project)
+                            <div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
+                                <div class="blog-item bg-light rounded overflow-hidden">
+                                    <div class="blog-img position-relative overflow-hidden">
+                                        <h4 class="mb-3">{{ $project->title }}</h4>
+                                    </div>
+                                    <div class="p-4">
+                                        <div class="d-flex mb-3">
+                                            <small class="me-3"><i class="far fa-user text-primary me-2"></i>{{ $project->authors }}</small>
                                         </div>
-                                        <div class="p-4">
-                                            <div class="d-flex mb-3">
-                                                <small class="me-3"><i class="far fa-user text-primary me-2"></i>{{ $project->authors }}</small>
-                                            </div>
-                                            <p>{{ $project->description }}</p>
-                                            <div class="project-files mt-3">
-                                                <h5>Files:</h5>
-                                                @if($project->file)
-                                                    @php
-                                                        $files = json_decode($project->file, true);
-                                                    @endphp
-                                                    @if(is_array($files))
-                                                        @foreach($files as $file)
-                                                            @if(is_array($file) && isset($file['path']) && isset($file['original_name']))
-                                                                <div class="file-item mb-2">
-                                                                    <a href="{{ asset('storage/' . $file['path']) }}" class="text-decoration-none" target="_blank">
-                                                                        <i class="far fa-file-pdf text-danger me-2"></i>{{ $file['original_name'] }}
-                                                                    </a>
-                                                                </div>
-                                                            @endif
-                                                        @endforeach
-                                                    @else
-                                                        <p>No files available.</p>
-                                                    @endif
+                                        <p>{{ $project->description }}</p>
+                                        <div class="project-files mt-3">
+                                            <h5>Files:</h5>
+                                            @if($project->files)
+                                                @php
+                                                    $files = json_decode($project->files, true);
+                                                @endphp
+                                                @if(is_array($files) && count($files) > 0)
+                                                    @foreach($files as $file)
+                                                        @if(isset($file['path']) && isset($file['original_name']))
+                                                            <div class="file-item mb-2">
+                                                                <a href="{{ asset('storage/' . $file['path']) }}" class="text-decoration-none" target="_blank">
+                                                                    <i class="far fa-file-pdf text-danger me-2"></i>{{ $file['original_name'] }}
+                                                                </a>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
                                                 @else
                                                     <p>No files available.</p>
                                                 @endif
-                                            </div>
+                                            @else
+                                                <p>No files available.</p>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            </div>
+                        @endforeach
+
                         </div>
                     </div>
                     <!-- Project List End -->
                 </div>
             </div>
-        </div>
+      </div>
+
         <!-- Project End -->
 
    

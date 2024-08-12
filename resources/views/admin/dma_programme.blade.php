@@ -20,7 +20,7 @@
                 <div class="box box-success">
                     <div class="box-header">
                         <i class="fa fa-comments-o"></i>
-                        <h3 class="box-title">Manage Computer System and Network Page</h3>
+                        <h3 class="box-title">Manage Multimedia and Animation Page</h3>
                     </div>
                 </div>
 
@@ -58,9 +58,9 @@
                                 @foreach($programmes as $i => $programme)
                                     <tr>
                                         <td>{{ $i + 1 }}</td>
-                                        <td style="width: 10%">{{ $programme->description }}</td>
-                                        <td style="">
-                                            <img src="{{ asset('storage/' . $programme->image) }}" class="img-responsive" alt="{{ $programme->description }}" style="width: 500px; height: auto;">
+                                        <td>{{ $programme->description }}</td>
+                                        <td>
+                                            <img src="{{ asset('storage/' . $programme->image) }}" class="img-responsive" alt="{{ $programme->description }}"  style="width: 500px; height: auto;">
                                         </td>
                                         <td>
                                             <button type="button" onclick="showProgrammeAction('edit', {{ $programme }})" class="btn btn-info"><i class="fa fa-edit"></i> Edit</button>
@@ -75,9 +75,8 @@
                 </div>
             </section>
         </div>
-
-        <!-- Programme Modal -->
-        <div class="modal fade" id="programmeModal" tabindex="-1" role="dialog" aria-labelledby="programmeModalLabel" aria-hidden="true">
+                <!-- Programme Modal -->
+                <div class="modal fade" id="programmeModal" tabindex="-1" role="dialog" aria-labelledby="programmeModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="box box-primary">
@@ -89,7 +88,7 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <form id="programmeForm" action="{{ route('add_programme') }}" role="form" method="post" enctype="multipart/form-data">
+                        <form id="programmeForm" action="{{ route('add_dmaprogramme') }}" role="form" method="post" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" id="programmeId" name="programmeId">
                             <div class="box-body">
@@ -106,11 +105,14 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="saveBtnCsn">Save Programme</button>
+                        <button type="button" class="btn btn-primary" id="saveBtnDma">Save Programme</button>
                     </div>
                 </div>
             </div>
         </div>
+
+
+      
 
         <script src="{{ asset('admin/plugins/jQuery/jQuery-2.1.3.min.js') }}"></script>
         <script src="{{ asset('admin/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
@@ -119,33 +121,31 @@
         <script src="{{ asset('admin/dist/js/demo.js') }}" type="text/javascript"></script>
 
         <script>
-             setTimeout(function() {
+              setTimeout(function() {
                 $('.responsemessage').fadeOut('slow');
             }, 1000);
+            $('#saveBtnDma').click(function () {
+                $('#programmeForm').submit();
+            });
             function showProgrammeAction(action, programme = null) {
                 const form = $('#programmeForm');
                 form.trigger("reset");
                 $('#programmeId').val('');
                 $('#programmeModalLabel').text('Add Programme');
-                form.attr('action', "{{ route('add_programme') }}");
+                form.attr('action', "{{ route('add_dmaprogramme') }}");
 
                 if (action === 'edit' && programme) {
                     $('#programmeModalLabel').text('Edit Programme');
                     $('#programmeId').val(programme.id);
                     $('#programmeDescription').val(programme.description);
-                    form.attr('action', "{{ route('edit_programme') }}");
+                    form.attr('action', "{{ route('edit_dmaprogramme') }}");
                 }
                 $('#programmeModal').modal('show');
             }
-
-            $('#saveBtnCsn').click(function () {
-                $('#programmeForm').submit();
-            });
-
             function deleteProgramme(programmeId) {
                 if (confirm('Are you sure you want to delete this programme?')) {
                     $.ajax({
-                        url: '/delete-programme/' + programmeId, // Use the correct URL
+                        url: '/delete-dmaprogramme/' + programmeId, // Use the correct URL
                         type: 'DELETE',
                         data: {
                             _token: '{{ csrf_token() }}'
@@ -163,7 +163,6 @@
                     });
                 }
             }
-
         </script>
     </div>
 </body>

@@ -48,9 +48,9 @@
                                         @foreach($events as $i => $event)
                                             <tr>
                                                 <td>{{ $i + 1 }}</td>
-                                                <td>{{ $event->title }}</td>
-                                                <td>{{ $event->highlight }}</td>
-                                                <td>{{ $event->description }}</td>
+                                                <td  style="width: 10%">{{ $event->title }}</td>
+                                                <td  style="width: 15%">{{ $event->highlight }}</td>
+                                                <td  style="width: 30%">{{ $event->description }}</td>
                                                 <td>
                                                     @if ($event->images && count(json_decode($event->images, true)) > 0)
                                                         @foreach (json_decode($event->images, true) as $image)

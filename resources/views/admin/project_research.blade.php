@@ -103,7 +103,7 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <form id="projectForm" action="{{ route('save_project') }}" role="form" method="post" enctype="multipart/form-data">
+                        <form id="projectForm" action="{{ route('save_staffproject') }}" role="form" method="post" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" id="projectId" name="projectId">
                             <div class="box-body">
@@ -183,7 +183,7 @@
                 document.getElementById('projectDescription').value = '';
                
 
-                document.getElementById('projectForm').action = "{{ route('save_project') }}";
+                document.getElementById('projectForm').action = "{{ route('save_staffproject') }}";
             }
             $('#projectModal').modal('show');
         }

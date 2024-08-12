@@ -32,41 +32,46 @@
                                     {!! \Session::get('message')[0] !!}
                                 </div>
                             @endif
-                                <table id="stff_table" class="table table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>SL#</th>
-                                            <th>Title</th>
-                                            <th>Authors</th>
-                                            <th>Description</th>
-                                            <th>Files</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($projects as $project)
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $project->title }}</td>
-                                            <td>{{ $project->authors }}</td>
-                                            <td>{{ $project->description }}</td>
-                                            <td>
-                                            @if(is_array($project->files))
-                                                @foreach($project->files as $file)
+                            <table id="stff_table" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>SL#</th>
+                                        <th>Title</th>
+                                        <th>Authors</th>
+                                        <th>Description</th>
+                                        <th>Files</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($projects as $project)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $project->title }}</td>
+                                        <td>{{ $project->authors }}</td>
+                                        <td>{{ $project->description }}</td>
+                                        <td>
+                                            @php
+                                                $files = json_decode($project->files, true);
+                                            @endphp
+
+                                            @if(is_array($files))
+                                                @foreach($files as $file)
                                                     <a href="{{ Storage::url($file['path']) }}" target="_blank">
                                                         <i class="fa fa-file-pdf-o"></i> {{ $file['original_name'] }}
                                                     </a><br>
                                                 @endforeach
                                             @endif
-                                            </td>
-                                            <td>
-                                                <button onclick="showProjectModal('edit', {{ $project }})" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</button>
-                                                <button onclick="deleteProject({{ $project->id }})" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</button>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                        </td>
+                                        <td>
+                                            <button onclick="showProjectModal('edit', {{ $project }})" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</button>
+                                            <button onclick="deleteProject({{ $project->id }})" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</button>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+
                             </div>
                         </div>
                     </div>
@@ -158,17 +163,22 @@
             if (confirm('Are you sure you want to delete this project?')) {
                 $.ajax({
                     url: '{{ route("delete_project") }}',
-                    type: 'POST',
+                    type: 'POST',  // Ensure this is POST
                     data: {
                         _token: '{{ csrf_token() }}',
                         id: id
                     },
                     success: function(response) {
+                        alert(response.message);
                         location.reload();
+                    },
+                    error: function(response) {
+                        alert('Error: ' + response.responseJSON.message);
                     }
                 });
             }
         }
+
 
         $('#saveProjectBtn').click(function() {
             $('#projectForm').submit();

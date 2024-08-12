@@ -100,6 +100,7 @@ public function updateEvent(Request $request)
             // Delete the event
             $event->delete();
             return response()->json(['success' => true, 'message' => 'Event deleted successfully!']);
+            
         } else {
             return response()->json(['success' => false, 'message' => 'Event not found!']);
         }

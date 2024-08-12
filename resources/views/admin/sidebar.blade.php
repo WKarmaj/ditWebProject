@@ -51,7 +51,7 @@
             </a>
             <ul class="treeview-menu">
             <li><a href="{{ route('admin.csn_programme') }}"><i class="fa fa-circle-o"></i>Computer System & Network</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>Multimedia & Animation</a></li>
+            <li><a href="{{ route('admin.viewDMA') }}"><i class="fa fa-circle-o"></i>Multimedia & Animation</a></li>
             </ul>
         </li>
         <li>
@@ -73,6 +73,7 @@
             <i class="fa  fa-gears"></i><span>Manage Goals</span>
             </a>
         </li>
+      
 
         </ul>
     </section>

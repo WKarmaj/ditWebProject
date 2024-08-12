@@ -34,7 +34,7 @@ class StudentController extends Controller
                 $fileName = $file->store('projects', 'public');
                 $files[] = ['path' => $fileName, 'original_name' => $file->getClientOriginalName()];
             }
-            $project->files = $files;
+            $project->files = json_encode($files);
         }
 
         $project->save();
@@ -64,7 +64,7 @@ class StudentController extends Controller
                 $fileName = $file->store('projects', 'public');
                 $files[] = ['path' => $fileName, 'original_name' => $file->getClientOriginalName()];
             }
-            $project->files = $files;
+            $project->files = json_encode($files);
         }
 
         $project->save();
@@ -78,12 +78,20 @@ class StudentController extends Controller
     {
         $project = t_csn::find($request->input('id'));
         if ($project) {
-            foreach (json_decode($project->files) as $file) {
-                Storage::disk('public')->delete($file);
+            $files = json_decode($project->files, true);
+    
+            if (is_array($files)) {
+                foreach ($files as $file) {
+                    \Storage::disk('public')->delete($file['path']);
+                }
             }
+    
             $project->delete();
             return response()->json(['message' => 'Project deleted successfully!']);
         }
+    
         return response()->json(['message' => 'Project not found!'], 404);
     }
+    
+    
 }

@@ -19,7 +19,9 @@
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- WOW.js -->
 
    
 
@@ -32,6 +34,59 @@
 
     <!-- Template Stylesheet -->
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <style>
+       .arrow-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .arrow-container i {
+            font-size: 24px;
+            color: #000;
+        }
+
+        .subcontainer-content ol {
+            padding-left: 20px;
+        }
+
+        .subcontainer {
+            position: relative;
+        }
+        .programme-section {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .programme-details {
+        margin-top: 20px;
+    }
+
+    .programme-details h5 {
+        color: #007bff;
+    }
+
+    .programme-details ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .programme-details ul li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    .programme-details ul li:before {
+        content: '\f00c';
+        font-family: FontAwesome;
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #007bff;
+    }
+    </style>
 </head>
 
 <body>
@@ -46,8 +101,8 @@
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>JNEC, Dewathang, Samdrup Jongkhar</small>
-                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>csn.jnec@rub.edu.bt</small>
+                <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>JNEC, Dewathang, Samdrup Jongkhar</small>
+                <small class="text-light"><i class="fa fa-envelope-open me-2"></i>csn.jnec@rub.edu.bt</small>
                 </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
@@ -76,17 +131,17 @@
                 <div class="navbar-nav ms-auto py-0">
                     <a href="{{ route('welcome') }}" class="nav-item nav-link">Home</a>
                     <a href="{{ route('aboutus') }}" class="nav-item nav-link ">About</a>
-                    <a href="{{ route('get.events') }}" class="nav-item nav-link">Events & News</a>
+                    <a href="{{ route('get.events') }}" class="nav-item nav-link ">Events & News</a>
                     <a href="{{ route('faculty.profile') }}" class="nav-item nav-link ">Faculty</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Project</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Project</a>
                         <div class="dropdown-menu m-0">
                             <a href="{{ route('faculty.project') }}" class="dropdown-item">Faculty Project</a>
                             <a href="{{ route('csn.project') }}" class="dropdown-item">CSN Project</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Programme</a>
+                        <a href="#" class="nav-link active dropdown-toggle" data-bs-toggle="dropdown">Programme</a>
                         <div class="dropdown-menu m-0">
                             <a href="{{route('dcsn.page')}}" class="dropdown-item">Computer System & Network</a>
                             <a href="{{route('DMA.page')}}" class="dropdown-item">Multimedia & Animation</a>
@@ -100,75 +155,34 @@
         <div class="container-fluid bg-dark py-5 " style="margin-bottom: 90px;">
             <div class="row py-5">
                 <div class="col-12 pt-lg-5 mt-lg-5 text-center">
-                    <h1 class="display-4 text-white animated zoomIn"></h1>
+                    <h1 class="display-4 text-white animated zoomIn">Diploma in Multimedia and Animation </h1>
                     <a href="" class="h5 text-white">Home</a>
                     <i class="far fa-circle text-white px-2"></i>
-                    <a href="" class="h5 text-white">Projects & Research</a>
+                    <a href="" class="h5 text-white">Programme</a>
                 </div>
             </div>
         </div>
     </div>
     <!-- Navbar End -->
-
-      <!-- Project Start -->
-        <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container py-5">
-                <div class="row g-5">
-                    <!-- Project List Start -->
-                    <div class="col-lg-8">
-                        <div class="row g-5">
-                            @foreach($projects as $project)
-                                <div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
-                                    <div class="blog-item bg-light rounded overflow-hidden">
-                                        <div class="blog-img position-relative overflow-hidden">
-                                           </i><h4 class="mb-3">{{ $project->title }}</h4>
-
-                                        </div>
-                                        <div class="p-4">
-                                            <div class="d-flex mb-3">
-                                                <small class="me-3"><i class="far fa-user text-primary me-2"></i>{{ $project->authors }}</small>
-                                            </div>
-                                            <p>{{ $project->description }}</p>
-                                            <div class="project-files mt-3">
-                                                <h5>Files:</h5>
-                                                @if($project->file)
-                                                    @php
-                                                        $files = json_decode($project->file, true);
-                                                    @endphp
-                                                    @if(is_array($files))
-                                                        @foreach($files as $file)
-                                                            @if(is_array($file) && isset($file['path']) && isset($file['original_name']))
-                                                                <div class="file-item mb-2">
-                                                                    <a href="{{ asset('storage/' . $file['path']) }}" class="text-decoration-none" target="_blank">
-                                                                        <i class="far fa-file-pdf text-danger me-2"></i>{{ $file['original_name'] }}
-                                                                    </a>
-                                                                </div>
-                                                            @endif
-                                                        @endforeach
-                                                    @else
-                                                        <p>No files available.</p>
-                                                    @endif
-                                                @else
-                                                    <p>No files available.</p>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
+   <!-- Features Start -->
+   <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-12">
+                    <!-- Blog Detail Start -->
+                    <div class="mb-5">
+                        <img class="img-fluid w-100 rounded mb-5"src="{{ asset('storage/' . $programmes->image) }}" alt="">
                     </div>
-                    <!-- Project List End -->
                 </div>
             </div>
         </div>
-        <!-- Project End -->
+    </div>
 
-   
+    <!-- Features End -->
 
 
-     <!-- Footer Start -->
-     <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
             <div class="row gx-5">
                 <div class="col-lg-4 col-md-6 footer-about">
@@ -236,14 +250,18 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
     <script src="{{asset('lib/wow/wow.min.js')}}"></script>
     <script src="{{asset('lib/easing/easing.min.js')}}"></script>
     <script src="{{asset('lib/waypoints/waypoints.min.js')}}"></script>
     <script src="{{asset('lib/counterup/counterup.min.js')}}"></script>
     <script src="{{asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
-
     <!-- Template Javascript -->
     <script src="{{asset('js/main.js')}}"></script>
+    <script>
+        new WOW().init();
+
+    </script>
 </body>
 
 </html>
